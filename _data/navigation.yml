@@ -12,20 +12,3 @@ main:
   #   url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
-
-  docs:
-    - title: Logbook
-      children: 
-      -title: "Cording-test"
-      url:
-      category:
-      -title: "Algoritmn"
-      url:
-      category:
-      -title: "Study"
-      url:
-      category:
-      -title: "Portfolio"
-      url:
-      category:
-      
