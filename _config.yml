@@ -104,7 +104,7 @@ analytics:
 # Site Author
 author:
   name             : "Sandor의 개발 일지"
-  #avatar           : "/assets/images/ProfileImg.JPG"
+  avatar           : "https://user-images.githubusercontent.com/97664446/170048505-2bd04607-aabc-47b9-b1b7-0eb5ecfe7e5c.jpg"
   bio              : "Make real your dreams"
   location         : "South Korea"
   #email            : "sandor2889@naver.com"
