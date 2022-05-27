@@ -16,7 +16,7 @@ toc_sticky: true
 
 # Cord
 ```c++
-#incldue <iostream>
+#include <iostream>
 
 using namespace std;
 
@@ -63,3 +63,8 @@ int main()
     return 0;
 }
 ```
+
+***
+
+# Result
+![Result](https://user-images.githubusercontent.com/97664446/170710299-edb14313-8d2c-4873-9dd9-0abf6d2f66b4.PNG)
