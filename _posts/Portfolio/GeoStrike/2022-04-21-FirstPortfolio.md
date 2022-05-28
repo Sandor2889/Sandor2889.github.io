@@ -1,6 +1,6 @@
 ---
 layout: single 
-title: "[포트폴리오] 첫 작품 : GeoStrike"
+title: "GeoStrike : 첫 작품"
 categories: Portfolio
 tag: Portfolio
 ---
@@ -11,7 +11,7 @@ tag: Portfolio
 
 ![GeoStrike](../../images/2022-04-21-FirstPortfolio/GeoStrike.PNG)
 
-[ 게임을 만들며…]
+### [게임을 만들며…]
 
 처음 기획때 멀티를 우습게 보았다. <br>
 널리고 널린 참고자료를 보며 만들면 되겠지 하고… <br>
