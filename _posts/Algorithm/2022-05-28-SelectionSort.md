@@ -13,43 +13,42 @@ toc_sticky: true
 기준이 되는 숫자와 나머지 숫자를 비교하여 작은 수를 왼쪽으로 보내면 된다 (오름차순)<br>
 시간 복잡도는 O(N^2) 이다
 
-
-![Desc1](https://user-images.githubusercontent.com/97664446/170831491-b08a3ae6-d924-4857-8eee-303008bdb677.PNG) <br>
+![Desc1](https://user-images.githubusercontent.com/97664446/170832248-54401f58-438c-4670-a8b8-ed952133031b.PNG) <br>
 2와 5중에 2가 더 작은 수이기 때문에 다음으로 넘어간다
 
 ***
 
-![Desc2](https://user-images.githubusercontent.com/97664446/170831492-c1a610c6-c37f-4c47-92fb-5bbeac92c55c.PNG) <br>
+![Desc2](https://user-images.githubusercontent.com/97664446/170832249-cfe3d363-317d-4550-879e-db0374bf57fe.PNG) <br>
 2와 7을 비교 한다, 자리바꿈 없음<br>
 
 ***
 
-![Desc3](https://user-images.githubusercontent.com/97664446/170831493-ca9e9130-2b95-49b4-89f9-7f47fae9e5b5.PNG) <br>
+![Desc3](https://user-images.githubusercontent.com/97664446/170832241-85c99f8d-41ed-4731-adc4-c67b21bd6712.PNG) <br>
 2와 8을 비교 한다, 자리바꿈 없음<br>
 
 ***
 
-![Desc4](https://user-images.githubusercontent.com/97664446/170832103-a2ad0b27-656d-4574-82d7-e07b7a129f3f.PNG) <br>
+![Desc4](https://user-images.githubusercontent.com/97664446/170832242-e6203d39-52e2-46c8-aadc-937753fd3482.PNG) <br>
 2와 4를 비교 한다, 자리바꿈 없음<br>
 
 ***
 
-![Desc5](https://user-images.githubusercontent.com/97664446/170831495-e6de32b3-6684-459c-8b1a-7d478775f605.PNG) <br>
+![Desc5](https://user-images.githubusercontent.com/97664446/170832243-8b4ed617-54f6-4cb5-a306-a17c194cdc15.PNG) <br>
 2와 9를 비교 한다, 자리바꿈 없음<br>
 
 ***
 
-![Desc6](https://user-images.githubusercontent.com/97664446/170832105-3e4bb47b-807d-4377-a80c-37b3078f3f56.PNG) <br>
+![Desc6](https://user-images.githubusercontent.com/97664446/170832245-7b49d664-3309-40b1-b3cf-f19af6986529.PNG) <br>
 2와 1을 비교 한다, 1이 더 작기 때문에 자리를 바꾼다 <br>
 
 ***
 
-![Desc7](https://user-images.githubusercontent.com/97664446/170831497-f61da339-6192-497a-8d04-1e8ce796b42c.PNG)
+![Desc7](https://user-images.githubusercontent.com/97664446/170832246-2482d431-08b8-49eb-b692-31272157cc52.PNG) <br>
 1과 6을 비교한다, 자리바꿈 없음 <br>
 
 ***
 
-![Desc8](https://user-images.githubusercontent.com/97664446/170831498-a60c21f5-4f23-4435-b387-b2069d46268f.PNG)
+![Desc8](https://user-images.githubusercontent.com/97664446/170832247-61cd32de-6a43-42d5-8abc-e7c0d7a02c62.PNG) <br>
 한 번 정렬이 실행되어 배열의 첫 번째 index에는 가장 작은 숫자가 오게된다 <br>
 이제 기준이 되는 [index = 1]에 있는 숫자 5부터 다시 정렬 과정을 반복한다 
 
