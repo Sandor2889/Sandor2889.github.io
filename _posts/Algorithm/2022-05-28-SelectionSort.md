@@ -29,7 +29,7 @@ toc_sticky: true
 
 ***
 
-![Desc4](https://user-images.githubusercontent.com/97664446/170831494-a1f2e677-fe0c-4f4a-833c-01db8f24a736.PNG) <br>
+![Desc4](https://user-images.githubusercontent.com/97664446/170832103-a2ad0b27-656d-4574-82d7-e07b7a129f3f.PNG) <br>
 2와 4를 비교 한다, 자리바꿈 없음<br>
 
 ***
@@ -39,7 +39,7 @@ toc_sticky: true
 
 ***
 
-![Desc6](https://user-images.githubusercontent.com/97664446/170831496-b550009a-5dc3-4195-a60b-f9fb1a354391.PNG) <br>
+![Desc6](https://user-images.githubusercontent.com/97664446/170832105-3e4bb47b-807d-4377-a80c-37b3078f3f56.PNG) <br>
 2와 1을 비교 한다, 1이 더 작기 때문에 자리를 바꾼다 <br>
 
 ***
