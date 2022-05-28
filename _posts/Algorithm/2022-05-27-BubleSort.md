@@ -46,7 +46,7 @@ toc_sticky: true
 
 ***
 
-![Desc8](https://user-images.githubusercontent.com/97664446/170823506-fb5e50ef-4ec6-4ed8-9eb2-4055ec57f32d.PNG) <br>
+![Desc8](https://user-images.githubusercontent.com/97664446/170828473-927f86df-5799-4569-a7be-420b1167215a.PNG) <br>
 이로써 정렬이 한번 이루어져 맨 끝 자리는 제일 큰 수(9)로 확정된다 <br>
 계속해서 위와 같은 과정을 반복하여 끝에서 부터 한 자리씩 수를 정렬해 나가면 된다
 
