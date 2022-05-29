@@ -95,17 +95,13 @@ public void PrintAll()
 
 이제 List에 요소들을 추가하기 위한 Add()와 출력을 위한 PrintAll()을 만들어 보았다 <br>
 
-<div align=middle>
-<img align='' src="https://user-images.githubusercontent.com/97664446/170860526-bd6b6f3c-a5b4-45c2-abb9-85ae157e1a8e.PNG" width="350" height="400">
-<img align='' src="https://user-images.githubusercontent.com/97664446/170860522-adef187a-38ad-4a7d-ae7a-0da910461565.PNG" width="350" height="400">
-</div>
 
-<div align=middle>
-<img align='' src="https://user-images.githubusercontent.com/97664446/170860527-4f3e42c1-4a9b-43f8-bf06-c84975c84fa4.PNG" width="350" height="400">
-<img align='' src="https://user-images.githubusercontent.com/97664446/170860525-226dbb57-c306-4827-9ae5-d3040241ac3f.PNG" width="350" height="400">
-</div>
+<img align='' src="https://user-images.githubusercontent.com/97664446/170860526-bd6b6f3c-a5b4-45c2-abb9-85ae157e1a8e.PNG" width="350" height="400"> <img align='' src="https://user-images.githubusercontent.com/97664446/170860522-adef187a-38ad-4a7d-ae7a-0da910461565.PNG" width="450"> <br> <br>
 
-![Result0](https://user-images.githubusercontent.com/97664446/170861011-cadf9749-8541-49f8-bd11-6726dcd1a3bc.PNG) <br>
+<img align='' src="https://user-images.githubusercontent.com/97664446/170860527-4f3e42c1-4a9b-43f8-bf06-c84975c84fa4.PNG" width="350" height="400"> <img align='' src="https://user-images.githubusercontent.com/97664446/170860525-226dbb57-c306-4827-9ae5-d3040241ac3f.PNG" width="450">
+
+
+![Result0](https://user-images.githubusercontent.com/97664446/170861011-cadf9749-8541-49f8-bd11-6726dcd1a3bc.PNG)
 
 물론, 조사식에서 list 내부를 들여다 보면 데이터들이 이렇게 잘 들어와 있다. <br>
 
@@ -133,13 +129,89 @@ else // 지정 _idx의 data 반환
 }
 ```
 
-<div align=middle>
-<img align='' src="https://user-images.githubusercontent.com/97664446/170861736-a33a2de0-215a-443a-adfb-3ab67a6998dd.PNG" width="350" height="400">
-<img align='' src="https://user-images.githubusercontent.com/97664446/170861733-9f47751e-f09f-44ef-8149-e21d2eb0c403.PNG" width="350" height="400">
-</div>
+<img align='' src="https://user-images.githubusercontent.com/97664446/170861736-a33a2de0-215a-443a-adfb-3ab67a6998dd.PNG" width="350" height="400"> <img align='' src="https://user-images.githubusercontent.com/97664446/170861733-9f47751e-f09f-44ef-8149-e21d2eb0c403.PNG" width="450"> <br> <br>
 
 ![Result3-2](https://user-images.githubusercontent.com/97664446/170861807-7a56be06-406d-4b4e-9a0a-09429d3cb85d.PNG)
+
+예외처리도 아주 잘 되었다. <br>
 
 ***
 
 ### RemoveLast()
+
+```c#
+// 마지막 Node 제거
+public void RemoveLast()
+{
+    // 예외처리
+    if (Count <= 0) 
+    {
+        Debug.LogError("List index out of range"); 
+        return;
+    }
+
+    if (Count == 1) // Node(Head) 가 단 하나 있을 경우
+    {
+        head.data = default(T);
+        head = null;
+    }
+    else // Node가 2개 
+    {
+        Node<T> last = head;
+
+        // 3개이상이면 for문으로 Node 탐색
+        for (int idx = 0; idx < Count - 2; idx++)
+        {
+            last = last.next;
+        }
+
+        last.next.data = default(T);
+        last.next.prev = null;
+        last.next = null;
+    }
+
+    Count--;
+}
+
+// 지정 Node 제거
+public void Remove(int _idx)
+{
+    if (_idx == 0)  // 제거할 Node가 첫 번째 Node 일경우
+    {
+        // head 제거 전 다음 Node를 미리 저장
+        Node<T> headNext = head.next;
+
+        head.data = default(T);
+        head = null;
+
+        // 저장한 다음 Node를 head에 대입
+        head = headNext;
+        head.prev = null;
+    }
+    else
+    {
+        Node<T> target = head;  // 제거할 Node
+        Node<T> targetNext;     // 제거할 Node의 다음 Node
+        Node<T> targetPrev;     // 제거할 Node의 이전 Node
+
+        // 제거할 Node 탐색
+        for (int idx = 0; idx < _idx - 1; idx++)
+        {
+            target = target.next;
+        }
+        targetNext = target.next.next;
+        targetPrev = targetNext.prev;
+
+        // target Node 제거
+        target.next.data = default(T);
+        target.next.prev = null;
+        target.next = null;
+
+        // 끊어진 Node 재연결
+        target.next = targetNext;
+        target.next.prev = targetPrev;
+    }
+
+    Count--;
+}
+```
