@@ -2,7 +2,7 @@
 layout: single
 title: "에라토스테네스의 체"
 categories: Algorithm
-tag: Algorithm
+tag: [Algorithm, PrimeNumber]
 toc: true
 toc_sticky: true
 ---
