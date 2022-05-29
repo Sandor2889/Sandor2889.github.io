@@ -224,9 +224,9 @@ public void Remove(int _idx)
     Count--;
 }
 ```
- <img src="https://user-images.githubusercontent.com/97664446/170864761-45b0169e-7cc6-477d-a218-095cc8f45dd8.PNG" width="350" height="400">  <img src="https://user-images.githubusercontent.com/97664446/170864759-1c7f877f-bd09-4ce7-8e44-6757fc1092c7.PNG" width="350" height="400"> <br> <br>
+ <img src="https://user-images.githubusercontent.com/97664446/170864761-45b0169e-7cc6-477d-a218-095cc8f45dd8.PNG" width="350" height="400">  <img src="https://user-images.githubusercontent.com/97664446/170864759-1c7f877f-bd09-4ce7-8e44-6757fc1092c7.PNG" width="350"> <br> <br>
 
-<img src="https://user-images.githubusercontent.com/97664446/170860526-bd6b6f3c-a5b4-45c2-abb9-85ae157e1a8e.PNG" width="350" height="400"> <img src="https://user-images.githubusercontent.com/97664446/170864762-8b509422-f325-4b54-a178-0d2f148997b0.PNG" width="450">
+<img src="https://user-images.githubusercontent.com/97664446/170864762-8b509422-f325-4b54-a178-0d2f148997b0.PNG" width="350" height="400"> <img src="https://user-images.githubusercontent.com/97664446/170869024-30a593ba-3a53-4070-aac3-184dd196fae9.PNG" width="450">
 
 이번에 추가한 것은 마지막 Node제가와 지정 index의 Node 제거 이다. <br>
 
