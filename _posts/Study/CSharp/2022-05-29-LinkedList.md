@@ -96,13 +96,13 @@ public void PrintAll()
 이제 List에 요소들을 추가하기 위한 Add()와 출력을 위한 PrintAll()을 만들어 보았다 <br>
 
 <div align=middle>
-<img align='' src="https://user-images.githubusercontent.com/97664446/170860526-bd6b6f3c-a5b4-45c2-abb9-85ae157e1a8e.PNG">
-<img align='' src="https://user-images.githubusercontent.com/97664446/170860522-adef187a-38ad-4a7d-ae7a-0da910461565.PNG">
+<img align='' src="https://user-images.githubusercontent.com/97664446/170860526-bd6b6f3c-a5b4-45c2-abb9-85ae157e1a8e.PNG" width="350" height="400">
+<img align='' src="https://user-images.githubusercontent.com/97664446/170860522-adef187a-38ad-4a7d-ae7a-0da910461565.PNG" width="350" height="400">
 </div>
 
 <div align=middle>
-<img align='' src="https://user-images.githubusercontent.com/97664446/170860527-4f3e42c1-4a9b-43f8-bf06-c84975c84fa4.PNG">
-<img align='' src="https://user-images.githubusercontent.com/97664446/170860525-226dbb57-c306-4827-9ae5-d3040241ac3f.PNG">
+<img align='' src="https://user-images.githubusercontent.com/97664446/170860527-4f3e42c1-4a9b-43f8-bf06-c84975c84fa4.PNG" width="350" height="400">
+<img align='' src="https://user-images.githubusercontent.com/97664446/170860525-226dbb57-c306-4827-9ae5-d3040241ac3f.PNG" width="350" height="400">
 </div>
 
 ![Result0](https://user-images.githubusercontent.com/97664446/170861011-cadf9749-8541-49f8-bd11-6726dcd1a3bc.PNG) <br>
@@ -134,10 +134,12 @@ else // 지정 _idx의 data 반환
 ```
 
 <div align=middle>
-<img align='' src="https://user-images.githubusercontent.com/97664446/170861736-a33a2de0-215a-443a-adfb-3ab67a6998dd.PNG">
-<img align='' src="https://user-images.githubusercontent.com/97664446/170861733-9f47751e-f09f-44ef-8149-e21d2eb0c403.PNG">
+<img align='' src="https://user-images.githubusercontent.com/97664446/170861736-a33a2de0-215a-443a-adfb-3ab67a6998dd.PNG" width="350" height="400">
+<img align='' src="https://user-images.githubusercontent.com/97664446/170861733-9f47751e-f09f-44ef-8149-e21d2eb0c403.PNG" width="350" height="400">
 </div>
 
 ![Result3-2](https://user-images.githubusercontent.com/97664446/170861807-7a56be06-406d-4b4e-9a0a-09429d3cb85d.PNG)
 
 ***
+
+### RemoveLast()
