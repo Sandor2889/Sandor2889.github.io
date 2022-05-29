@@ -257,7 +257,6 @@ public void Insert(int _idx, T _value)
         // 새로 추가된 Node를 head로 대입하고 temp와 연결
         head = newHead;
         newHead.next = temp;
-        
     }
     else  // _idx가 1 이상일 경우
     {
@@ -290,5 +289,3 @@ public void Insert(int _idx, T _value)
 지정 Index에 Node 추가하기 완성 ~! <br>
 전체 코드는 다른 Repositoyu에 업로드 할 것이다. <br>
 다음은 LinkedList를 이용한 HashTable을 포스팅 할거다 .<br>
-
-***

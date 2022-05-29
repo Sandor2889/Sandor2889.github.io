@@ -1,7 +1,7 @@
 ---
 title: "Study C#"
 layout: archive
-permalink: categories/study-CSharp
+permalink: categories/studyCSharp
 author_profile: true
 sidebar_main: true
 ---

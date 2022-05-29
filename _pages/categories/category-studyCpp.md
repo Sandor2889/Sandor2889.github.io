@@ -1,7 +1,7 @@
 ---
 title: "Study C++"
 layout: archive
-permalink: categories/study-Cpp
+permalink: categories/studyCpp
 author_profile: true
 sidebar_main: true
 ---
