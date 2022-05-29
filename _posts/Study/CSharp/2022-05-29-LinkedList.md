@@ -2,14 +2,18 @@
 layout: single
 title: "LinkedList 구현"
 categories: StudyCSharp
-tag: [Study, C#, DataStructure]
+tag: [Study, CSharp, DataStructure]
 toc: true
 toc_sticky: true
 ---
 
+# Description
+
 자료구조 중 하나인 양방향 LinkedList를 C#으로 구현해 볼것이다. <br>
 Unity에 연동하여 출력하였다.
 
+# Cord
+### Class
 ```c#
 // 제네릭 형식의 Node Class 선언
 public class Node<T>
@@ -40,6 +44,7 @@ LinkedList에는 (첫 번째 Node가 되는 head, 현재 길이를 나타내는 
 
 ***
 
+### Add() & PrintAll()
 ```c#
 // 노드 넣기
 public void Add(T _data)
@@ -100,5 +105,41 @@ public void PrintAll()
     <td><img alt="" src="https://user-images.githubusercontent.com/97664446/170860527-4f3e42c1-4a9b-43f8-bf06-c84975c84fa4.PNG" /></td><td><img alt="" src="https://user-images.githubusercontent.com/97664446/170860525-226dbb57-c306-4827-9ae5-d3040241ac3f.PNG" /></td>
   <tr>
 </table>
+
+![Result0](https://user-images.githubusercontent.com/97664446/170861011-cadf9749-8541-49f8-bd11-6726dcd1a3bc.PNG) <br>
+
+물론, 조사식에서 list 내부를 들여다 보면 데이터들이 이렇게 잘 들어와 있다.
+
+***
+
+### GetData()
+```c#
+if (Count <= _idx)  // 예외처리
+{
+    Debug.LogError("list index out of range"); 
+    return default(T);  // 0을 반환
+}
+else // 지정 _idx의 data 반환
+{
+    Node<T> mid = head;
+
+    // _idx의 Node 찾기
+    for (int idx = 0; idx < _idx; idx++)
+    {
+        mid = mid.next;
+    }
+
+    // 해당 Node의 data 반환
+    return mid.data;
+}
+```
+
+<table>
+ <tr>
+    <td><img alt="" src="https://user-images.githubusercontent.com/97664446/170861736-a33a2de0-215a-443a-adfb-3ab67a6998dd.PNG" /></td><td><img alt="" src="https://user-images.githubusercontent.com/97664446/170861733-9f47751e-f09f-44ef-8149-e21d2eb0c403.PNG" /></td>
+  <tr>
+</table>
+
+![Result3-2](https://user-images.githubusercontent.com/97664446/170861807-7a56be06-406d-4b4e-9a0a-09429d3cb85d.PNG)
 
 ***
