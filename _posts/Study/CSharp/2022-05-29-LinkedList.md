@@ -12,6 +12,15 @@ toc_sticky: true
 자료구조 중 하나인 양방향 LinkedList를 C#으로 구현해 볼것이다. <br>
 Unity에 연동하여 출력하였다.
 
+![Desc](https://user-images.githubusercontent.com/97664446/170868138-ece0f830-2fa5-4494-ad9c-cc7bfdd03a17.PNG)
+
+Arr와 LinkedList의 차이
+1. 주소의 연속성 (Arr O, List X)
+2. Arr는 접근 속도가 빠름
+3. List는 추가, 삽입, 삭제에 용이함
+
+이 정도로 볼 수 있겠다. <br>
+
 # Cord
 ### Class
 ```c#
@@ -137,7 +146,7 @@ else // 지정 _idx의 data 반환
 
 ***
 
-### RemoveLast()
+### RemoveLast() & Remove()
 
 ```c#
 // 마지막 Node 제거
@@ -215,3 +224,71 @@ public void Remove(int _idx)
     Count--;
 }
 ```
+ <img src="https://user-images.githubusercontent.com/97664446/170864761-45b0169e-7cc6-477d-a218-095cc8f45dd8.PNG" width="350" height="400">  <img src="https://user-images.githubusercontent.com/97664446/170864759-1c7f877f-bd09-4ce7-8e44-6757fc1092c7.PNG" width="350" height="400"> <br> <br>
+
+<img src="https://user-images.githubusercontent.com/97664446/170860526-bd6b6f3c-a5b4-45c2-abb9-85ae157e1a8e.PNG" width="350" height="400"> <img src="https://user-images.githubusercontent.com/97664446/170864762-8b509422-f325-4b54-a178-0d2f148997b0.PNG" width="450">
+
+이번에 추가한 것은 마지막 Node제가와 지정 index의 Node 제거 이다. <br>
+
+***
+
+### Insert()
+```c#
+// _idx에 Node 추가하기
+public void Insert(int _idx, T _value)
+{
+    // 예외 처리
+    if ( Count < _idx) 
+    { 
+        Debug.LogError("List index out of range"); 
+        return; 
+    }
+
+    if (_idx == 0)   // 맨 처음 idx에 삽입 할때
+    {
+        // 새로운 Node 생성
+        Node<T> newHead = new Node<T>();
+        newHead.data = _value;
+
+        // 기존의 head를 temp에 저장
+        Node<T> temp = head;
+        temp.prev = newHead;
+
+        // 새로 추가된 Node를 head로 대입하고 temp와 연결
+        head = newHead;
+        newHead.next = temp;
+        
+    }
+    else  // _idx가 1 이상일 경우
+    {
+        Node<T> mid = head;
+        Node<T> newNode;
+
+        for (int idx = 0; idx < _idx - 1; idx++)
+        {
+            mid = mid.next;
+        }
+
+        // 새로운 Node와 value 추가
+        newNode = new Node<T>();
+        newNode.data = _value;
+        newNode.prev = mid;
+
+        // 새로 추가된 Node와 뒷 Node 연결
+        newNode.next = mid.next;
+        newNode.next.prev = newNode;
+
+        // 새 Node와 앞 Node 연결
+        mid.next = newNode;        
+    }
+
+    Count++;
+}
+```
+<img src="https://user-images.githubusercontent.com/97664446/170867114-90a50add-5a0d-4a9c-a680-1f223ece240f.PNG" width="350" height="400"> <img src="https://user-images.githubusercontent.com/97664446/170867111-9b496b1d-9369-4710-aa30-a65523a26708.PNG" width="450">
+
+지정 Index에 Node 추가하기 완성 ~! <br>
+전체 코드는 다른 Repositoyu에 업로드 할 것이다. <br>
+다음은 LinkedList를 이용한 HashTable을 포스팅 할거다 .<br>
+
+***
