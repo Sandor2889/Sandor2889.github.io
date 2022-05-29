@@ -106,7 +106,7 @@ public void PrintAll()
 
 ![Result0](https://user-images.githubusercontent.com/97664446/170861011-cadf9749-8541-49f8-bd11-6726dcd1a3bc.PNG) <br>
 
-물론, 조사식에서 list 내부를 들여다 보면 데이터들이 이렇게 잘 들어와 있다.
+물론, 조사식에서 list 내부를 들여다 보면 데이터들이 이렇게 잘 들어와 있다. <br>
 
 ***
 
