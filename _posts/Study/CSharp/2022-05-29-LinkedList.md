@@ -1,8 +1,8 @@
 ---
 layout: single
-title: "LinkedList 구현"
+title: "C# LinkedList 구현"
 categories: StudyCSharp
-tag: [Study, CSharp, DataStructure]
+tag: [Study, C#, DataStructure]
 toc: true
 toc_sticky: true
 ---
@@ -66,10 +66,8 @@ public void Add(T _data)
             mid = mid.next;
         }
         mid.next = new Node<T>();
-        mid.next.data = _data;
-
-        // 이전 Node 연결
-        mid.next.prev = mid;
+        mid.next.data = _data;  // 다음 Node 연결
+        mid.next.prev = mid;    // 이전 Node 연결
     }
 
     Count++;
