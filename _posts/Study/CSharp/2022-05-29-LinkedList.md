@@ -14,12 +14,12 @@ Unity에 연동하여 출력하였다.
 
 ![Desc](https://user-images.githubusercontent.com/97664446/170868138-ece0f830-2fa5-4494-ad9c-cc7bfdd03a17.PNG)
 
-Arr와 LinkedList의 차이
-1. 주소의 연속성 (Arr O, List X)
-2. Arr는 접근 속도가 빠름
-3. List는 추가, 삽입, 삭제에 용이함
+> Arr와 LinkedList의 차이
+- 주소의 연속성 (Arr O, List X)
+- Arr는 접근 속도가 빠름
+- List는 추가, 삽입, 삭제에 용이함
 
-이 정도로 볼 수 있겠다. <br>
+> 이 정도로 볼 수 있겠다. <br>
 
 # Cord
 ### Class
