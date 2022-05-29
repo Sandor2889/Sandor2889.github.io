@@ -1,7 +1,7 @@
 ---
 title: "Cording Test"
 layout: archive
-permalink: categories/cording-test
+permalink: categories/cordingTest
 author_profile: true
 sidebar_main: true
 ---
