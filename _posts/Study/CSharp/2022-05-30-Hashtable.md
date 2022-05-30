@@ -93,7 +93,7 @@ public void Put(string _key, T _value)
 ```c#
 public object GetData(string _key)
 {
-    object data = "This key has not exit";   // data 값 반환
+    object data = "This key does not exist";   // data 값 반환
     int index = GetHashCode(_key);  // _key가 가진 HashTable의 index값 저장
     LinkedList<T> currentList = listBuckets[index];  // _key가 있는 HashTable의 주소를 저장  
 
@@ -126,6 +126,8 @@ key를 추적하여 key가 가진 data를 가져오는 GetData()를 구현 해�
 ![Test1](https://user-images.githubusercontent.com/97664446/171034471-410e94c6-bf44-43c7-b3da-1a66e698290a.PNG) ![Result1](https://user-images.githubusercontent.com/97664446/171034475-aefcf2b6-f81d-4da9-825b-1262976cd641.PNG) <br>
 
 바나나의 data와 존재하지 않는 수박의 data가 출력되었다 <br>
+앗 그리고 올바른 영어 표현은 이것 이였다... <del>"This Key has not exit" </del> <br>
+영어 기본이라도 하자... "This key does not exist" <br>>
 
 ***
 
