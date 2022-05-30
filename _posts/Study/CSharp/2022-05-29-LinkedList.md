@@ -203,22 +203,35 @@ public void Remove(int _idx)
         Node<T> targetNext;     // 제거할 Node의 다음 Node
         Node<T> targetPrev;     // 제거할 Node의 이전 Node
 
-        // 제거할 Node 탐색
-        for (int idx = 0; idx < _idx - 1; idx++)
+        if (_idx < Count - 1) // head와 끝 Node 사이
         {
-            target = target.next;
+            // 제거할 Node 탐색
+            for (int idx = 0; idx < _idx - 1; idx++)
+            {
+                target = target.next;
+            }
+            targetNext = target.next.next;
+            targetPrev = targetNext.prev;
+
+            // target Node 제거
+            target.next.data = default(T);
+            target.next.prev = null;
+            target.next = null;
+
+            // 끊어진 Node 재연결
+            target.next = targetNext;
+            target.next.prev = targetPrev;
         }
-        targetNext = target.next.next;
-        targetPrev = targetNext.prev;
-
-        // target Node 제거
-        target.next.data = default(T);
-        target.next.prev = null;
-        target.next = null;
-
-        // 끊어진 Node 재연결
-        target.next = targetNext;
-        target.next.prev = targetPrev;
+        else // 끝에 있는 Node 일때
+        {
+            for (int idx = 0; idx < _idx - 1; idx++)
+            {
+                target = target.next;
+            }
+            target.next.data = default(T);
+            target.next.prev = null;
+            target.next = null;
+        }
     }
 
     Count--;
