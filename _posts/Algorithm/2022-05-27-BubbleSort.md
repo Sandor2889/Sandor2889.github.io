@@ -67,7 +67,7 @@ int main()
 {
     int dataArr[] = { 2, 5, 7, 8, 4, 9, 3, 1, 6 };
 
-    // Buble sort 실행
+    // Bubble sort 실행
     for (int i = 0; i < 9; i++)
     {
         for (int j = 0; j < 8 - i; j++)

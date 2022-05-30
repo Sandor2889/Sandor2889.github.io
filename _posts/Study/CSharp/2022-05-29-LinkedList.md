@@ -60,7 +60,7 @@ public void Add(T _data)
 {
     if (Count == 0)
     {
-        // 맨 처음 Set할때 Head 지정
+        // 맨 처음 Add할때 Head 지정
         head = new Node<T>();
         head.data = _data;
     }
