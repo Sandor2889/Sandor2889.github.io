@@ -62,7 +62,6 @@ toc_sticky: true
 
 using namespace std;
 
-
 int main()
 {
     int dataArr[] = { 2, 5, 7, 8, 4, 9, 3, 1, 6 };
