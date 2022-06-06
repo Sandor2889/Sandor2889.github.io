@@ -11,7 +11,7 @@ toc_sticky: true
 # Description
 왼쪽에서부터 한 자리씩 정렬해 나간다 <br>
 기준이 되는 숫자와 나머지 숫자를 비교하여 작은 수를 왼쪽으로 보내면 된다 (오름차순)<br>
-시간 복잡도는 O(N^2) 이다
+`시간 복잡도 = O(N^2)` 이다
 
 ![Desc1](https://user-images.githubusercontent.com/97664446/170835406-f0a6849a-6e8f-473a-8477-b2a972152502.PNG) <br>
 2와 5중에 2가 더 작은 수이기 때문에 다음으로 넘어간다

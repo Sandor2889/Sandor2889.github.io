@@ -9,7 +9,7 @@ toc_sticky: true
 
 # Description
 기준이 되는 숫자와 바로옆의 숫자를 비교하여 더 작은 숫자를 앞으로 보내주는 것을 반복하는 정렬 방법이다 <br>
-시간 복잡도는 O(N^2) 이다
+`시간 복잡도 = O(N^2)` 이다
 
 ![Desc1](https://user-images.githubusercontent.com/97664446/170835760-53b71ea1-4664-4e2a-bee4-42477311a89d.PNG) <br>
 이렇게 2와 5의 숫자를 비교한다 <br>
