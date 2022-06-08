@@ -298,5 +298,5 @@ public void Insert(int _idx, T _value)
 <img src="https://user-images.githubusercontent.com/97664446/170867114-90a50add-5a0d-4a9c-a680-1f223ece240f.PNG" width="350" height="400"> <img src="https://user-images.githubusercontent.com/97664446/170867111-9b496b1d-9369-4710-aa30-a65523a26708.PNG" width="450">
 
 지정 Index에 Node 추가하기 완성 ~! <br>
-전체 코드는 다른 Repositoyu에 업로드 할 것이다. <br>
+전체 코드는 다른 Repository에 업로드 할 것이다. <br>
 다음은 LinkedList를 이용한 HashTable을 포스팅 할거다 .<br>
