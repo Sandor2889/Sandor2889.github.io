@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Chapter3 운영체제1 : 운영체제와 컴퓨터"
+title: "Chapter3 운영체제 : 운영체제와 컴퓨터"
 categories: StudyCS
 tag: [Study, CS, OperatingSystem]
 toc: true
