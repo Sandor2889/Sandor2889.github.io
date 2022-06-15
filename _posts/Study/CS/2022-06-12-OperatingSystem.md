@@ -99,8 +99,7 @@ CPU 안에 있는 매우 빠른 임시기억장치를 가리킨다. CPU와 직�
 #### <span style="color:orange"> 산술논리연산장치</span>
 덧셈, 뺼셈 같은 두 숫자의 산술 연산과 배타적 논리합, 논리곱 같은 논리 연산을 계산하는 디지털 회로이다.
 
-**[CPU의 연산 처리]**
-
+<span style="color:Green"> CPU의 연산 처리 </span>  
 CPU에서 제어장치, 레지스터, 산술논리연산장치를 통해 연산하는 순서는 이와같다.
 
 <p align="center">
