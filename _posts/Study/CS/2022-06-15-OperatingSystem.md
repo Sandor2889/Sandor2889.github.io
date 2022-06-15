@@ -11,7 +11,7 @@ toc_sticky: true
 CPU는 그저 `메모리`에 올라와 있는 프로그램의 명령어들을 실행할 뿐이다.  
 
 <p align= "center"> 
-![Memory](https://user-images.githubusercontent.com/97664446/173821406-3141c180-08aa-4186-99d0-603b20284733.PNG)
+<img src="https://user-images.githubusercontent.com/97664446/173821406-3141c180-08aa-4186-99d0-603b20284733.PNG" alt="Memory">
 </p>
 
 - 레지스터: CPU 안에 있는 작은 메모리, 휘발성, 속도가 가장 빠름, 기억 용량이 가장 적다.
@@ -70,7 +70,7 @@ int main()
 해당 데이터가 캐시에 없다면 주 메모리로가서 데이터를 찾아오는 것을 `캐시미스`라고 한다.  
 
 <p align= "center"> 
-![Cache](https://user-images.githubusercontent.com/97664446/173821429-675a5ebf-97c5-4dc2-9b77-a7bf24974ec6.PNG)
+<img src="https://user-images.githubusercontent.com/97664446/173821429-675a5ebf-97c5-4dc2-9b77-a7bf24974ec6.PNG" alt="Cache">
 </p>
 
 캐시히트를 하게되면 해당 데이터를 제어장치를 거쳐 가져오게 된다. 캐시히트의 경우 위치도 가깝고 CPU 내부 버스를 기반으로 작동하기 때문에 빠르다. 반면에 캐시미스가 발생되면 메모리에서 가져오게 되는데, 이는 시스템 기반으로 작동하기 때문에 느리다.
@@ -80,7 +80,7 @@ int main()
 레지스터는 주 메모리에 비하면 굉장히 작고 주 메모리는 굉장히 크기 때문에 작은 레지스터가 캐시 계층으로써 역할을 잘 해주려면 이 매핑을 어떻게 하느냐가 중요하다.  
 
 
-- 직접 매핑 (directed mapping):
+- 직접 매핑 (directed mapping):  
 메모리가 1 ~ 100이 있고 캐시가 1 ~ 10 이 있다면 1:1~10, 2:1~20... 이런식으로 매핑하는 것을 말한다.  
 처리가 빠르지만 충돌 발생이 잦다.
 - 연관 매핑 (associative mapping):  
@@ -105,7 +105,7 @@ ex) 메모리가 1~100이 있고 캐시가 1~10이 있다면 캐시 1~5에는 1~
 데이터베이스 시스템을 구축할 때도 메인 데이터베이스 위에 레디스(redis) 데이터베이스 계층을 `캐싱 계층`으로 둬서 성능을 향상시키기도 한다.
 
 <p align= "center"> 
-![Redis](https://user-images.githubusercontent.com/97664446/173828274-133c5c95-5a91-4307-972e-6510fcd157fa.PNG)
+<img src="https://user-images.githubusercontent.com/97664446/173828274-133c5c95-5a91-4307-972e-6510fcd157fa.PNG" alt="Redis">
 </p>
 
 ## <span style="color:orange"> 메모리 관리 </span>
@@ -115,7 +115,7 @@ ex) 메모리가 1~100이 있고 캐시가 1~10이 있다면 캐시 1~5에는 1~
 메모리 기법의 하나로 컴퓨터가 실제로 이용 가능한 메모리 자원을 추상화하여 이를 사용자들에게 매우 큰 메모리로 보이게 만드는 것을 말한다.
 
 <p align= "center"> 
-![VirtualMemory](https://user-images.githubusercontent.com/97664446/173831821-74f9f883-0fe3-4fe7-a052-beb7edf1ec34.PNG)
+<img src="https://user-images.githubusercontent.com/97664446/173831821-74f9f883-0fe3-4fe7-a052-beb7edf1ec34.PNG" alt="VirtualMemory">
 </p>
 
 이떄 가상적으로 주어진 주소를 `가상 주소(logical address)`라고 하며, 실제 메모리상에 있는 주소를 `실제 주소(physical address)`라고 한다. 가상 주소는 메모리관리장치(MMU)에 의해 실제 주소로 변환되며, 이 덕분에 사용자는 실제 주소를 의식할 필요 없이 프로그램을 구축할 수 있게 된다. 
