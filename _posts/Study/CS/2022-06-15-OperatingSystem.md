@@ -134,3 +134,183 @@ ex) 메모리가 1~100이 있고 캐시가 1~10이 있다면 캐시 1~5에는 1~
 3. 운영체제는 페이지 테이블을 확인하여 가상 메모리에 페이지가 존재하는지 확인하고, 없으면 프로세스를 중단하고 현재 물리 메모리에 비어 있는 프레임이 있는지 찾는다. 물리 메모리에도 없다면 스와핑이 발동된다.  
 4. 비어있는 프레임에 해당 페이지를 로드하고, 페이지 테일블을 최신화 한다.
 5. 중단되었던 CPU를 다시 시작한다.  
+
+> 페이지(page): 가상 메모리를 사용하는 최소 크기 단위
+
+> 프레임(frame): 실제 메로리를 사용하는 최소 크기 단위
+
+### <span style="color:orange"> 스레싱 </span>
+메모리의 페이지 폴트율이 높은 것을 의미하며, 이는 컴퓨터의 심각한 성능 저하를 초래한다.  
+
+<p align= "center"> 
+<img src="https://user-images.githubusercontent.com/97664446/173831821-74f9f883-0fe3-4fe7-a052-beb7edf1ec34.PNG" alt="Thrashing">
+</p>
+
+스레싱은 메모리에 너무 많은 프로세스가 동시에 올라가게 되면 스와핑이 많이 일어나서 발생하는 것이다. 페이지 폴트가 일어나면 CPU 이용률이 낮아진다. CPU 이용률이 낮아지게 되면 운영체제는 가용성을 더 높이기 위해 더 많은 프로세스를 메모리에 올리게 된다. 이와 같은 악순환이 반복되며 스레싱이 일어난다.  
+이를 해결하기 위한 방법으로는 메모리를 늘리거나, HDD를 SDDD로 바꾸는 방법이 있다. 이외에 운영체제에서 해결할 수 있는 방법은 `작업세트`와 `PFF`가 있다.
+
+#### <span style="color:orange"> 작업 세트 (working set)</span>
+프로세스의 과거 사용 이력인 지역성을 통해 결정된 페이지 집합을 만들어서 미리 메모리에 로드하는 것이다. 미리 메모리에 로드하면 탐색에 드는 비용을 줄일 수 있고 스와핑 또한 줄일 수 있다.
+
+#### <span style="color:orange"> PFF (Page Fault Frequency)</span>
+페이지 폴트 빈도를 조절하는 방법으로 상한선과 하한선을 만드는 방법이다. 만약 상한선에 도달한다면 페이지를 늘리고 하한선에 도달하면 페이지를 줄이는 것이다.
+
+### <span style="color:orange"> 메모리 할당 </span>
+메모리에 프로그램을 할당할 때는 시작 메모리 위치, 메모리의 할당 크기를 기반으로 할당하는데, `연속 할당`과 `불연속 할당`으로 나뉜다.
+
+#### <span style="color:orange"> 연속 할당 </span>
+메모리에 `연속적으로` 공간을 할당하는 것을 말한다.
+
+<p align= "center"> 
+<img src="https://user-images.githubusercontent.com/97664446/174049701-8211c814-5c6e-4f21-9035-0d4c0ff03b2c.PNG" alt="Assignment">
+</p>
+
+프로세스 A, 프로세스 B, 프로세스 C가 순차적으로 공간에 할당하는 것을 볼 수 있다. 이는 메모리를 미리 나누어 관리하는 `고정 분할 방식`과 매 시점 프로그램의 크기에 맞게 메모리를 분할하여 사용하는 `가변 분할 방식`이 있다.
+
+##### <span style="color:orange"> 고정 분할 방식 (fixed partition allocation)</span>
+메모리를 미리 나누어 관리하는 방식이며, 메모리가 미리 나뉘어 있기 때문에 융퉁성이 없다. 또한, 내부 단편화가 발생한다.
+
+##### <span style="color:orange"> 가변 분할 방식 (variable partition allocation) </span>
+매 시점 프로그램의 크기에 맞게 동적으로 메모리를 나눠 사용합니다. 내부 단편화는 발생하지 않고 외부 단편화는 발생할 수 있다. 이는 최초적합(first fit), 최적적합(best fit), 최악적합(worst fit)이 있다.
+|이름|설명|
+|--|--|
+|최초적합|위쪽이나 아래쪽부터 시작해서 홀을 찾으면 바로 할당.|
+|최적적합|프로세스의 크기 이상인 공간 중 가장 작은 홀부터 할당.|
+|최악적합|프로세스의 크기와 가장 많이 차이가 나는 홀에 할당.|
+
+> 내부 단편화(internal fragmentation): 메모리를 나눈 크기보다 프로그램이 작아서 들어가지 못하는 공간이 많이 발생하는 현상.
+
+> 외부 단편화(external fragmentation): 메모리를 나눈 크기보다 프로그램이 커서 들어가지 못하는 공간이 많이 발생하는 현상.
+
+> 홀(hole): 할당할 수 있는 비어 있는 메모리 공간.
+
+
+#### <span style="color:orange"> 불연속 할당 </span>
+메모리를 연속적으로 할당하지 않는 불연속 할당은 현대 운영체제가 쓰는 방법으로 불연속 할당인 페이징 기법이 있다. 메모리를 동일한 크기의 페이지(보통 4KB)로 나누고 프로그램마다 페이지 테이블을 두어 메모리에 프로그램을 할당한다. 페이징 기법 말고도 `세그멘테이션`, `페이지드 세그멘테이션`이 있다.
+
+##### <span style="color:orange"> 페이징 (paging) </span>
+동일한 크기의 페이지 단위로 나누어 메모리의 서로 다른 위치에 프로세스를 할당한다. 홀의 크기가 균일하지 않은 문제가 없어지지만 주소 변환이 복잡해진다.
+
+##### <span style="color:orange"> 세그멘테이션 (segmentation) </span>
+페이지 단위가 아닌 의미 단위인 세그먼트(segment)로 나누는 방식이다. 프로세스는 코드, 데이터, 스택, 힙 등으로 이루어지는데, 코드와 데이터 등 이를 기반으로 나눌 수도 있으며 함수 단위로 나눌 수도 있음을 의미한다. 공유와 보안 측면에서 좋으며 홀 크기가 균일하지 않은 문제가 발생된다.
+
+##### <span style="color:orange"> 페이지드 세그멘테이션 (paged segmentation) </span>
+공유나 보안을 의미 단위의 세그먼트로 나누고, 물리적 메모리는 페이지로 나누는 것을 말한다.
+
+
+### <span style="color:orange"> 페이지 교체 알고리즘 </span>
+메모리는 한정되어 있기 때문에 스와핑이 많이 일어난다. 스와핑이 많이 일어나지 않도록 설계되어야 하며 이는 페이지 교체 알고리즘을 기반으로 스와핑이 일어난다.
+
+
+#### <span style="color:orange"> 오프라인 알고리즘 (offline algorithm) </span>
+먼 미래에 참조되는 페이지와 현재 할당하는 페이지를 바꾸는 알고리즘이며, 가장 좋은 방법이다. 그러나 미래에 사용되는 프로세스를 우리는 알 수가 없다.  
+즉, 사용할 수 없는 알고리즘이지만 다른 알고리즘과의 성능 비교에 대한 기준을 제공한다.
+
+#### <span style="color:orange"> FIFO (Fist In First Out) </span>
+가장 먼저 온 페이지를 교체 영역에 가장 먼저 놓는 방법을 의미한다.
+
+#### <span style="color:orange"> LRU (Least Recentle Used) </span>
+참조가 가장 오래된 페이지를 바꾼다. 오래된 것을 파악하기 위해 각 페이지마다 계수기, 스택을 두어야 하는 문제점이 있다.
+
+<p align= "center"> 
+<img src="https://user-images.githubusercontent.com/97664446/174053156-d1030407-281c-4f01-b655-34572c103b8f.PNG" alt="LRU">
+</p>
+
+그림에서 보듯이 5번째에 5번 페이지가 들어왔을 때 가장 오래된 1번 페이지와 스왑하는 것을 볼 수 있는데 이것이 바로 LRU 방식이다.  
+LRU 구현을 프로그래밍으로 구현할 때는 보통 두 개의 자료 구조로 구현한다. 바로 해시 테이블과 이중 연결 리스트이다. 해시 테이블은 이중 연결 리스트에서 빠르게 찾을 수 있도록 쓰고, 이중 연결 리스트는 한정된 메모리를 나타낸다.  
+C++에서는 해시테이블을 unordered_map으로 구현하고, 이중 연결 리스트는 list로 구현할 수 있다.  
+
+```c++
+#include <iostream>
+#include <list>
+#include<unordered_map>
+
+using namespace std;
+
+class LRUCache
+{
+	list<int> li;
+	unordered_map<int, list<int>::iterator> hash;
+	int cSize;
+
+public:
+	LRUCache(int);
+	void refer(int);
+	void display();
+
+};
+
+LRUCache::LRUCache(int n)
+{
+	cSize = n;
+}
+
+void LRUCache::refer(int _x)
+{
+	if (hash.find(_x) == hash.end())
+	{
+		if (li.size() == cSize)
+		{
+			// 가장 끝에 있는 것을 뽑아낸다. (가장 오래된 것을 의미)
+			int last = li.back();
+			li.pop_back();
+			hash.erase(last);
+		}	
+	}
+	else
+	{
+		li.erase(hash[_x]);
+	}
+
+	// 해당 페이지를 참조할 때
+	// 가장 앞에 붙인다. 또한, 해시 테이블에 저장.
+	li.push_front(_x);
+	hash[_x] = li.begin();
+}
+
+void LRUCache::display()
+{
+	for (auto it = li.begin(); it != li.end(); it++)
+	{
+		cout << (*it) << " ";
+	}
+
+	cout << '\n';
+}
+
+int main()
+{
+	LRUCache cache(3);
+	cache.refer(1);
+	cache.display();
+	cache.refer(3);
+	cache.display();
+	cache.refer(0);
+	cache.display();
+	cache.refer(3);
+	cache.display();
+	cache.refer(5);
+	cache.display();
+	cache.refer(6);
+	cache.display();
+	cache.refer(3);
+	cache.display();
+	return 0;
+}
+```
+
+<p align= "center"> 
+<img src="https://user-images.githubusercontent.com/97664446/174059856-1d8d1252-9ed2-4e59-b0eb-6a4fef05adfe.PNG" alt="LRUResult">
+</p>
+
+#### <span style="color:orange"> NUR (Not Used Recently) </span>
+LRU에서 발전한 NUR 알고리즘이 있다.
+
+<p align= "center"> 
+<img src="https://user-images.githubusercontent.com/97664446/174060191-c6b5fe92-e6e3-4621-ada2-48429e49627a.PNG" alt="NUR">
+</p>
+
+clock 알고리즘이라고 하며 먼저 0과 1을 가진 비트를 둔다. 1은 최근에 참조 되었고 0은 참조되지 않음을 의미한다. 시계 방향으로 돌면서 0을 찾고 0을 찾은 순간 해당 프로세스를 교체하고, 해당 부분을 1로 바꾸는 알고리즘이다.
+
+##### <span style="color:orange"> LFU (Least Frquently Used) </span>
+가장 참조 횟수가 적은 페이지를 교체한다. 즉, 많이 사용되지 않은 것을 교체하는 것이다.
