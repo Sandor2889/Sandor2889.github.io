@@ -3,8 +3,6 @@ layout: single
 title: "Chapter3 운영체제 : 메모리"
 categories: StudyCS
 tag: [Study, CS, OperatingSystem]
-toc: true
-toc_sticky: true
 ---
 
 # <span style="color:orange"> 메모리 </span>

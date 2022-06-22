@@ -3,8 +3,6 @@ layout: single
 title: "Chapter3 운영체제 : 운영체제와 컴퓨터"
 categories: StudyCS
 tag: [Study, CS, OperatingSystem]
-toc: true
-toc_sticky: true
 ---
 
 지금까지 개발지망생으로서 프로그래밍 언어 `c/c++/c#`만을 공부해왔다. <br>
