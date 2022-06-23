@@ -226,7 +226,7 @@ IPC의 종류로는 공유 메모리, 파일, 소켓, 익명 파이프, 명명 �
 <img src="https://user-images.githubusercontent.com/97664446/174749950-12017a5e-1aa7-4e88-a9bc-40e31a956abd.PNG" alt="SharedResource">
 </p>
 
-프로세스 A와 프로세스 B가 동시에 접근하여 타임이이 서로 꼬여 정상 결과값은 300인데 200이 출력된다.
+프로세스 A와 프로세스 B가 동시에 접근하여 타임이 서로 꼬여 정상 결과값은 300인데 200이 출력된다.
 
 ## <span style="color:orange"> 임계 자원 (critical section) </span>
 공유 자원에 접근할 때 순서 등의 이유로 결과가 달라지는 영역을 임계 영역이라고 한다.  
