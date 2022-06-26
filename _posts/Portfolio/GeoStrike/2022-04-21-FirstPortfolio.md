@@ -1,7 +1,7 @@
 ---
 layout: single 
 title: "GeoStrike : 첫 작품"
-categories: Portfolio
+categories: GeoStrike
 tag: Portfolio
 ---
 

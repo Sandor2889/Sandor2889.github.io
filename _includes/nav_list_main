@@ -64,7 +64,7 @@
                 {% endfor %}
                 {% for category in site.categories %}
                     {% if category[0] == "Portfolio" %}
-                        <li><a href="/categories/ToDream" class="">ToDream ({{category[1].size}})</a></li>
+                        <li><a href="/categories/toDream" class="">ToDream ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
