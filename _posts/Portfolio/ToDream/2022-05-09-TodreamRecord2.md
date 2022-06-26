@@ -1,7 +1,7 @@
 ---
 layout: single 
 title: "To-dream : 기록 제 2장"
-categories: Portfolio
+categories: ToDream
 tag: Portfolio
 ---
 
