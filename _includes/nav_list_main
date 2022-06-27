@@ -58,14 +58,14 @@
       <span class="nav__sub-title"><span style="color:orange">Portfolio</span></span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Portfolio" %}
+                    {% if category[0] == "GeoStrike" %}
                         <li><a href="/categories/geoStrike" class="">GeoStrike ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Portfolio" %}
+                    {% if category[0] == "ToDream" %}
                         <li><a href="/categories/toDream" class="">ToDream ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
