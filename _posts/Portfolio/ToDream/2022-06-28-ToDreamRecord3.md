@@ -1,6 +1,6 @@
 ---
 layout: single 
-title: "To-dream : 기록 제 3장 (Remake)"
+title: "To-dream : 기록 제 3장 (Remake) : Buoyancy"
 categories: ToDream
 tag: Portfolio
 ---
@@ -33,4 +33,12 @@ sea of thieves 라는 게임이 있다. 물 그래픽이 굉장히 좋고 배를
 이정도는 할만하다. 부력자체는 이미 구현이 되었고, 퀄을 높이기위한 텍스쳐를 구할 필요가 있어졌다.
 그리고 맵에 적용시키전 오클루전 컬링이 호환되도록 신경써야 한다.
 
-[부력 영상 추가하기]
+<p align= "center"> 
+<img src="https://user-images.githubusercontent.com/97664446/176895372-1e03c44a-abd0-4ff9-9321-7939754f61c6.gif" alt="WaterFail"> 
+</p>
+
+현재 부력 관련으로 테스트 일주일째.  
+파도의 이음새들이 보인다.  
+유니티에서 제공해주는 BoatAttack에서 활용해야 겠다.  
+하지만 URP를 기반으로 만들어져있기때문에 우리 프로젝트에 맞게 변형시켜야 한다.  
+어려운 싸움이 될것으로 보인다...
