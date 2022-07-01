@@ -45,5 +45,5 @@ sea of thieves 라는 게임이 있다. 물 그래픽이 굉장히 좋고 배를
 
 1. Skybox를 푸르게 변경
 2. 카메라를 따라다니는 water mesh 적용 (테셀레이션 효과)
-3. job system과 셰이더, hlsl
+3. job system과 셰이더, hlsl  
 에 대해 알아야 한다 !!!
