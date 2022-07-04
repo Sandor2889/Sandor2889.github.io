@@ -47,3 +47,41 @@ sea of thieves 라는 게임이 있다. 물 그래픽이 굉장히 좋고 배를
 2. 카메라를 따라다니는 water mesh 적용 (테셀레이션 효과)
 3. job system과 셰이더, hlsl  
 에 대해 알아야 한다 !!!
+
+
+***
+
+WaterSystem을 만들기 시작한지 일주일이 다 되어간다.  
+여전히 만들지 못하고 있다.  
+Shader에대한 튜토리얼 영상도 보고...  
+boatAttack의 Water 코드를 뜯어보고...  
+
+그렇게 시도를 하였지만 아직 문제를 찾지 못하고 있다.  
+
+`RenderPipelineManager.beginCameraRendering`  
+문제의 요인인 코드이다.  
+URP에서만 호환되며 Built-in에서 사용하려면 `Camera.OnPreRender`를 사용해야 한다고 한다.  
+
+이것은 매프레임 카메라 렌더링하기전에 호출 한다고 한다.
+델리게이트로써 원하는 기능을 추가해주면 update()하듯이 호출한다.
+
+URP 프로젝트를 따로 만들어 위 코드로 Water Mesh를 만들어 보았다.
+
+<p align= "center"> 
+<img src="https://user-images.githubusercontent.com/97664446/177155687-94a1be2f-5364-4a1c-a8a0-0583003f2e83.gif" alt="WaterMesh"> 
+</p>
+
+씬뷰 카메라와, 메인 카메라 둘의 위치에 Water Mesh를 그려주는 것을 볼 수 있다.
+이것이 첫걸음이 될 요소이다.  
+
+그러나 !  
+Built-in에서 Camera.OnpreRender로 바꾸고 해보면 위와같이 Mesh가 보이질 않는다.  
+Debug를 해보면 오류없이 작동은 하고있었다.  
+원인을 찾기 위해 질문글도 올려보고 하였지만 도저히 찾을 수가 없다.  
+
+며칠이 지난 오늘 Update에서 돌려보았다.  
+본래는 씬cam과 메인cam을 왔다갔다하면서 렌더링해주지만 update에서 하게되면  
+코드가 다소 복잡해지기 때문에 메인cam에서만 그려지게 하였다.  
+그래서 그런지 vertices는 보이지 않지만 화면에 무언가가 깔려 있고 메인cam을 따라다니는 것을 볼 수 있었다.  
+
+이제 Shader를 작성해 이 깔려있는 무언가가 제대로 되어있는지 확인해보고자 한다.
