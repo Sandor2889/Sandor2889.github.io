@@ -85,3 +85,13 @@ Debug를 해보면 오류없이 작동은 하고있었다.
 그래서 그런지 vertices는 보이지 않지만 화면에 무언가가 깔려 있고 메인cam을 따라다니는 것을 볼 수 있었다.  
 
 이제 Shader를 작성해 이 깔려있는 무언가가 제대로 되어있는지 확인해보고자 한다.
+
+***
+
+<p align= "center"> 
+<img src="https://user-images.githubusercontent.com/97664446/177311576-9f1c4816-b34e-4876-8bfc-4c081a96323c.PNG" alt="URPWater"> <img src="https://user-images.githubusercontent.com/97664446/177311583-91346a64-4959-48de-9c6e-c12bf1b8ed66.PNG" alt="BuiltInWater"> 
+</p>
+
+드디어 Built-in에 Water를 깔았다.  
+왼쪽의 URP 버전의 Water와 비교하면 다소 투박하다.  
+이제 셰이더를 어떻게든 만져줘야 할것 같다.
