@@ -89,9 +89,14 @@ Debug를 해보면 오류없이 작동은 하고있었다.
 ***
 
 <p align= "center"> 
-<img src="https://user-images.githubusercontent.com/97664446/177311576-9f1c4816-b34e-4876-8bfc-4c081a96323c.PNG" alt="URPWater"> <img src="https://user-images.githubusercontent.com/97664446/177311583-91346a64-4959-48de-9c6e-c12bf1b8ed66.PNG" alt="BuiltInWater"> 
+<img src="https://user-images.githubusercontent.com/97664446/177311576-9f1c4816-b34e-4876-8bfc-4c081a96323c.PNG" alt="URPWater">  
+Built-in
+
+
+<img src="https://user-images.githubusercontent.com/97664446/177311583-91346a64-4959-48de-9c6e-c12bf1b8ed66.PNG" alt="BuiltInWater">  
+URP 
 </p>
 
 드디어 Built-in에 Water를 깔았다.  
-왼쪽의 URP 버전의 Water와 비교하면 다소 투박하다.  
+URP 버전의 Water와 비교하면 다소 투박하다.  
 이제 셰이더를 어떻게든 만져줘야 할것 같다.
