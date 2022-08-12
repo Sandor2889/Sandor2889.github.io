@@ -239,7 +239,7 @@ public void Remove(int _idx)
 
 <img src="https://user-images.githubusercontent.com/97664446/170864762-8b509422-f325-4b54-a178-0d2f148997b0.PNG" width="350" height="400"> <img src="https://user-images.githubusercontent.com/97664446/170869024-30a593ba-3a53-4070-aac3-184dd196fae9.PNG" width="450">
 
-이번에 추가한 것은 마지막 Node제가와 지정 index의 Node 제거 이다. <br>
+이번에 추가한 것은 마지막 Node제거와 지정 index의 Node 제거 이다. <br>
 
 ***
 
