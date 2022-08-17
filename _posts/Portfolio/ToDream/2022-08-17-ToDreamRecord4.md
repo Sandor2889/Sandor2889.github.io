@@ -116,16 +116,14 @@ QuestManager에서 내가 만든, 등록된 Quest 데이터들을 모두 저장�
 7. Quest 목록창에서 현재 수락한 Quest를 확인 할 수 있다. (포기하기, 돌아가기)
 8. 각 NPC마다 CurrentQuest의 상태에 따라 마커를 띄운다 (수락가능, 진행중, 완료가능)
 
-![Quest](https://user-images.githubusercontent.com/97664446/185073744-205ea34d-9a93-4044-bf26-5b7b4cbf0c98.gif)
+![Quest](https://user-images.githubusercontent.com/97664446/185073744-205ea34d-9a93-4044-bf26-5b7b4cbf0c98.gif)  
 NPC와 대화하고 퀘스트를 받고 퀘스트를 포기했다가 다시 대화하는 모습이다.
 
 ## Quest GUIEditor
-![QuestGenerator](https://user-images.githubusercontent.com/97664446/185080288-750a0a72-4b8f-473f-88f8-4b6ffc30ce5a.PNG)
+![QuestGenerator](https://user-images.githubusercontent.com/97664446/185080288-750a0a72-4b8f-473f-88f8-4b6ffc30ce5a.PNG)  
 
 퀘스트를 생성하고 등록, 편집까지 쉽고 자유롭게 하기위해 커스텀 에디터를 활용해보았다.  
 이번에 처음 사용해보았고 어떤 기능들이 있는지만 알면 생각보다 적용하기 어렵지 않았다.  
 은근 또 이게 꾸미는 재미가 있기도 했다.
 
 ![QuestGenerator](https://user-images.githubusercontent.com/97664446/185081215-558a7b3b-4f28-4af2-aa0c-69b47ff88c67.gif)
-
-```
