@@ -49,7 +49,7 @@ QuestManager에서 내가 만든, 등록된 Quest 데이터들을 모두 저장�
 어떤 Quest가 수락되었고 어떤 Quest가 완료 되었는지 따로 관리하며  
 각 퀘스트의 진행 상태를 계속해서 Update 시켜주는 역할을 해준다.  
 
-```C++
+```c++
     #region Singleton
     private static QuestManager _instance;
     public static QuestManager _Instance
