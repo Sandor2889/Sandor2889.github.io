@@ -12,8 +12,8 @@ tag: Portfolio
 기본적으로 필수 요소 4가지가 있다.
 - Title
 - Description
-- goal
-- reward
+- Goal
+- Reward
 
 대략적으로 Quest의 구조는 이렇다.  
 ![Quest](https://user-images.githubusercontent.com/97664446/185072117-1b8e13c2-d09b-4f12-ad42-38dcf1814901.PNG)
