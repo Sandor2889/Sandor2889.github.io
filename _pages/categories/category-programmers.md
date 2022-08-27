@@ -1,7 +1,7 @@
 ---
 title: "Programmers"
 layout: archive
-permalink: categories/boj
+permalink: categories/programmers
 author_profile: true
 sidebar_main: true
 ---
