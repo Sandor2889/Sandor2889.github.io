@@ -53,8 +53,8 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "StudyCS" %}
-                        <li><a href="/categories/studyCS" class="">CS ({{category[1].size}})</a></li>
+                    {% if category[0] == "Unreal" %}
+                        <li><a href="/categories/unreal" class="">Unreal Engine ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
