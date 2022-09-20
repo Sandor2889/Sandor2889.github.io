@@ -79,4 +79,101 @@ UI의 이미지 위치를 Canvas내에서 이동 시킬땐 anchoredPosition을 �
 
 짠~  Player의 위치가 Map을 키는동안 잘 업데이트가 되는 것을 볼 수 있다.  
 
-다음엔 퀘스트의 위치, NPC의 위치를 추가해 보겠다.
+# NPC와 QuestTarget
+
+NPC와 QuestTarget와 고정된 위치이다. 그래서 각각의 위치를 직접 잡아 주었다.  
+![NPCAndQuestTarget](https://user-images.githubusercontent.com/97664446/191268236-f381ac58-b1d2-4bb8-9652-ec1a3deba1a7.PNG)  
+
+NPC는 NPCMakerUI에서 모든 NPC 데이터를 가지고 있다.  
+그리고 각 NPC의 퀘스트 상태에따라 이미지를 바꿔주고자 한다.  
+default, avaliable, inProgress, completed의 상태가 있다.  
+OnEnable()에 다음과 같은 메서드를 추가한다.  
+
+```c++
+[SerializeField] private Sprite _default;
+[SerializeField] private Sprite _avaliable;
+[SerializeField] private Sprite _inProgress;
+[SerializeField] private Sprite _completed;
+
+public void NPCUpdate()
+{
+    NPCMarkerUI npcMarkerUI = UIManager._Instance._NPCMarkerUI;
+
+    for (int i = 0; i < npcMarkerUI._Npcs.Length; i++)
+    {
+        if (npcMarkerUI._Npcs[i]._CurrentQuest == null || npcMarkerUI._Npcs[i]._CurrentQuest._questState == QuestState.Unvaliable)
+        {
+            npcMarkerUI._Npcs[i]._myImage.sprite = _default;
+        }
+        else if (npcMarkerUI._Npcs[i]._CurrentQuest._questState == QuestState.Avaliable)
+        {
+            npcMarkerUI._Npcs[i]._myImage.sprite = _avaliable;
+        }
+        else if (npcMarkerUI._Npcs[i]._CurrentQuest._questState == QuestState.Accepted)
+        {
+            npcMarkerUI._Npcs[i]._myImage.sprite = _inProgress;
+        }
+        else if (npcMarkerUI._Npcs[i]._CurrentQuest._questState == QuestState.Completed)
+        {
+            npcMarkerUI._Npcs[i]._myImage.sprite = _completed;
+        }
+    }
+}
+```
+
+QuestTarget은 Quest 수락이 되면 각각의 이미지들을 활성화 시켜줘야한다. 
+QuestTarget을 따로 저장하고 있지 않기 때문에 새로 만들어 주었다.  
+그리고 각각 QuestTarget에 대응되는 Image[]도 같이 만들어 준다.  
+마찬가지로 OnEnable()에 메서드를 추가한다.  
+
+```c++
+    [SerializeField] private GameObject _targetParent;
+    [SerializeField] private QuestTargetMarker[] _questTargets;     // _targetImage와 순서 맞출 것
+    [SerializeField] private Image[] _targetImage;                  // _questTargets와 순서 맞출 것
+    [SerializeField] private Sprite _questIcon;
+
+    public void QuestTargetUpdate()
+    {
+        for(int i = 0; i < _questTargets.Length; i++)
+        {
+            if (_questTargets[i].gameObject.activeSelf)
+            {
+                _targetImage[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                _targetImage[i].gameObject.SetActive(false);
+            }
+        }
+    }
+```
+
+# Name Text
+
+각각의 Icon들이 뭔지 잘 모를 수 있어 Text를 추가 해봤다.  
+각 Icon에 Event Trigger를 달고 Enter일 경우 텍스트를 키고 Exit일 경우 텍스트를 끄는 방식으로 하였다.  
+Icon의 name은 IconName을 같이 달아줘서 이름을 넘겨 받는다.  
+![NameText](https://user-images.githubusercontent.com/97664446/191268249-a8ab539c-18f5-4675-8089-ae0aaa8c60e6.PNG)
+
+
+```c++
+    [SerializeField] private Text _iconName;                            // Icon 이름표
+    [SerializeField] private Vector2 _offsetPos = new Vector2(0, 30);   // Text offset Pos
+
+    public void OnText(IconName iconName)
+    {
+        _iconName.gameObject.SetActive(true);
+        _iconName.rectTransform.anchoredPosition = iconName.GetComponent<RectTransform>().anchoredPosition + _offsetPos;
+        _iconName.text = iconName._name;
+    }
+
+    public void OffText()
+    {
+        _iconName.gameObject.SetActive(false);
+        _iconName.text = " ";
+    }
+```
+
+![Result1](https://user-images.githubusercontent.com/97664446/191268245-1bf9ac38-0250-4ecb-b788-a07c039c38ab.PNG)
+
+
