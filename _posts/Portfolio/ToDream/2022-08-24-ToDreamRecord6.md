@@ -150,7 +150,7 @@ QuestTarget을 따로 저장하고 있지 않기 때문에 새로 만들어 주�
 
 # Name Text
 
-각각의 Icon들이 뭔지 잘 모를 수 있어 Text를 추가 해봤다.  
+각각의 Icon들이 뭔지 잘 모를 수 있어 Text를 추가 해봤다.  마우스를 해당 Icon에 올리면 텍스트가 보일 것이다.  
 각 Icon에 Event Trigger를 달고 Enter일 경우 텍스트를 키고 Exit일 경우 텍스트를 끄는 방식으로 하였다.  
 Icon의 name은 IconName을 같이 달아줘서 이름을 넘겨 받는다.  
 ![NameText](https://user-images.githubusercontent.com/97664446/191268249-a8ab539c-18f5-4675-8089-ae0aaa8c60e6.PNG)
