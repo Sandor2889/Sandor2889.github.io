@@ -127,25 +127,25 @@ QuestTarget을 따로 저장하고 있지 않기 때문에 새로 만들어 주�
 마찬가지로 OnEnable()에 메서드를 추가한다.  
 
 ```c++
-    [SerializeField] private GameObject _targetParent;
-    [SerializeField] private QuestTargetMarker[] _questTargets;     // _targetImage와 순서 맞출 것
-    [SerializeField] private Image[] _targetImage;                  // _questTargets와 순서 맞출 것
-    [SerializeField] private Sprite _questIcon;
+[SerializeField] private GameObject _targetParent;
+[SerializeField] private QuestTargetMarker[] _questTargets;     // _targetImage와 순서 맞출 것
+[SerializeField] private Image[] _targetImage;                  // _questTargets와 순서 맞출 것
+[SerializeField] private Sprite _questIcon;
 
-    public void QuestTargetUpdate()
+public void QuestTargetUpdate()
+{
+    for(int i = 0; i < _questTargets.Length; i++)
     {
-        for(int i = 0; i < _questTargets.Length; i++)
+        if (_questTargets[i].gameObject.activeSelf)
         {
-            if (_questTargets[i].gameObject.activeSelf)
-            {
-                _targetImage[i].gameObject.SetActive(true);
-            }
-            else
-            {
-                _targetImage[i].gameObject.SetActive(false);
-            }
+            _targetImage[i].gameObject.SetActive(true);
+        }
+        else
+        {
+            _targetImage[i].gameObject.SetActive(false);
         }
     }
+}
 ```
 
 # Name Text
@@ -157,21 +157,21 @@ Icon의 name은 IconName을 같이 달아줘서 이름을 넘겨 받는다.
 
 
 ```c++
-    [SerializeField] private Text _iconName;                            // Icon 이름표
-    [SerializeField] private Vector2 _offsetPos = new Vector2(0, 30);   // Text offset Pos
+[SerializeField] private Text _iconName;                            // Icon 이름표
+[SerializeField] private Vector2 _offsetPos = new Vector2(0, 30);   // Text offset Pos
 
-    public void OnText(IconName iconName)
-    {
-        _iconName.gameObject.SetActive(true);
-        _iconName.rectTransform.anchoredPosition = iconName.GetComponent<RectTransform>().anchoredPosition + _offsetPos;
-        _iconName.text = iconName._name;
-    }
+public void OnText(IconName iconName)
+{
+    _iconName.gameObject.SetActive(true);
+    _iconName.rectTransform.anchoredPosition = iconName.GetComponent<RectTransform>().anchoredPosition + _offsetPos;
+    _iconName.text = iconName._name;
+}
 
-    public void OffText()
-    {
-        _iconName.gameObject.SetActive(false);
-        _iconName.text = " ";
-    }
+public void OffText()
+{
+    _iconName.gameObject.SetActive(false);
+    _iconName.text = " ";
+}
 ```
 
 ![Result1](https://user-images.githubusercontent.com/97664446/191268245-1bf9ac38-0250-4ecb-b788-a07c039c38ab.PNG)
