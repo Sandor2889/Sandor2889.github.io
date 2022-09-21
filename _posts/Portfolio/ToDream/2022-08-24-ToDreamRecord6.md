@@ -81,11 +81,10 @@ UI의 이미지 위치를 Canvas내에서 이동 시킬땐 anchoredPosition을 �
 
 # NPC와 QuestTarget
 
-NPC와 QuestTarget와 고정된 위치이다. 그래서 각각의 위치를 직접 잡아 주었다.  
+NPC와 QuestTarget은 고정된 위치이다. 그래서 각각의 위치를 직접 잡아 주었다.  
 ![NPCAndQuestTarget](https://user-images.githubusercontent.com/97664446/191268236-f381ac58-b1d2-4bb8-9652-ec1a3deba1a7.PNG)  
 
-NPC는 NPCMakerUI에서 모든 NPC 데이터를 가지고 있다.  
-그리고 각 NPC의 퀘스트 상태에따라 이미지를 바꿔주고자 한다.  
+NPC는 NPCMakerUI에서 모든 NPC 데이터를 가지고 있다. 그리고 각 NPC의 퀘스트 상태에따라 이미지를 바꿔주고자 한다.  
 default, avaliable, inProgress, completed의 상태가 있다.  
 OnEnable()에 다음과 같은 메서드를 추가한다.  
 
@@ -121,7 +120,7 @@ public void NPCUpdate()
 }
 ```
 
-QuestTarget은 Quest 수락이 되면 각각의 이미지들을 활성화 시켜줘야한다. 
+QuestTarget은 Quest 수락이 되면 각각의 이미지들을 활성화 시켜줘야한다.  
 QuestTarget을 따로 저장하고 있지 않기 때문에 새로 만들어 주었다.  
 그리고 각각 QuestTarget에 대응되는 Image[]도 같이 만들어 준다.  
 마찬가지로 OnEnable()에 메서드를 추가한다.  
