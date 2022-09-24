@@ -184,7 +184,7 @@ public void OffText()
 
 1. 일단 맵을 키면 맵 UI 사이즈 안에서 우클릭을 하면 PingIcon을 마우스 위치에 나타나게한다.  
 2. 나타나게 했으면 제거도 만들어야한다. 제거는 PingIcon 위에서 다시 한번 우클릭 하는 것이다.  
-    그렇다면 if 조건으로 Ping위에 마우스가 있다면 제거, 없다면 나타내기가 될 것이다. 
+ 그렇다면 if 조건으로 Ping위에 마우스가 있다면 제거, 없다면 나타내기가 될 것이다. 
 
 ```c++
 [Header("[Ping]")]
@@ -224,11 +224,23 @@ public void RemovePing()
     _pingImage.gameObject.SetActive(false);
     _iconName.gameObject.SetActive(false);
 }
+
+// Ping 이미지 위 마우스 포인터 감지
+public void TryRemovePing()
+{
+    _pointerOnPing = true;
+}
+
+public void CancelRemovePing()
+{
+    _pointerOnPing = false;
+}
 ```
 
-이 TryOnPing()을 위에서 코루틴으로 만든 CUpdateMap 코루틴에서 같이 돌려주면 된다.  
-그러면 이제 맵에서 보일 Ping 오브젝트를 만들어야 한다.
+이 TryOnPing()을 위에서 코루틴으로 만든 CUpdateMap 코루틴에서 같이 돌려주면 된다. 
+TryRemovePing()과 CancelRemovePing()은 각각 Ping 이미지에서 PointerEnter와 PointerExit 이벤트 트리거를 활용하였다.
 
+그러면 이제 맵에서 보일 Ping 오브젝트를 만들어야 한다.
 SetPingPos() 메서드에서 이와 같이 코드를 추가한다.  
 ```c++
 private const float _fallHeight = 0f;
@@ -246,3 +258,24 @@ private void SetPingPos()
     _ping.transform.position = new Vector3(posX * _realScale, _fallHeight, posZ * _realScale);
 } 
 ```
+
+- 현재 월드맵은 높이가 0으로 일정하기때문에 Ping 오브젝트의 위치를 0으로 같이 맞춰주면된다.  
+ 그러나 바다에다가 핑을찍을 경우 0보다 아래에 있기때문에 Ping이 떠있듯이 어색하게 보인다.
+ 이를 해결하기위해 Ping을 높은 곳에서부터 보이지 않는 속도로 떨어지게하고 바닥 콜라이더에 닿는 순간 멈추게 하려고 하였으나 낙하 속도가 너무 빠르면 바닥 콜라이더를 뚫고 지나가버리고 느리면 Ping이 떨어지는 것이 보이게 된다. 이 건은 차후 아이디어가 생기면 고쳐야 할 부분이 되겠다.  
+
+아무튼 Ping 오브젝트는 Player와 충돌시 사라지도록 따로 Ping class에서 다뤄줬다.  
+```c++
+private void OnTriggerEnter(Collider other)
+{
+    if(other.gameObject.tag == "Player")
+    {
+        UIManager._Instance._WorldMapUI.RemovePing();
+        gameObject.SetActive(false);
+    }
+}
+```
+
+# Result
+![Result](https://user-images.githubusercontent.com/97664446/192115107-e8de623f-f989-4fe8-912d-ac3759be3eb9.gif)
+
+짠 ~ 많이 미숙하지만 드디어 월드맵의 기능들이 완성되었다 !!
