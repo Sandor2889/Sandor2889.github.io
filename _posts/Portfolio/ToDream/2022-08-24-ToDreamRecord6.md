@@ -45,8 +45,8 @@ UI 맵의 크기는 1000으로 실제맵과 1:3비율이다.
 [SerializeField] private Transform _player;     // 실제 Player 위치
 [SerializeField] private Image _playerIcon;     // 맵의 Player 이미지
 
-private float _scaleFactor = 0.334f;
-private Coroutine _coroutinMap;
+private const float _scaleFactor = 0.334f;      // 축척비
+private Coroutine _coroutinMap;                 // 현재 실행중인 코루틴     
 
 private void OnEnable()
 {
@@ -89,6 +89,7 @@ default, avaliable, inProgress, completed의 상태가 있다.
 OnEnable()에 다음과 같은 메서드를 추가한다.  
 
 ```c++
+[Header("[NPC]")]
 [SerializeField] private Sprite _default;
 [SerializeField] private Sprite _avaliable;
 [SerializeField] private Sprite _inProgress;
@@ -126,6 +127,7 @@ QuestTarget을 따로 저장하고 있지 않기 때문에 새로 만들어 주�
 마찬가지로 OnEnable()에 메서드를 추가한다.  
 
 ```c++
+ [Header("[QuestTarget]")]
 [SerializeField] private GameObject _targetParent;
 [SerializeField] private QuestTargetMarker[] _questTargets;     // _targetImage와 순서 맞출 것
 [SerializeField] private Image[] _targetImage;                  // _questTargets와 순서 맞출 것
@@ -176,3 +178,71 @@ public void OffText()
 ![Result1](https://user-images.githubusercontent.com/97664446/191268245-1bf9ac38-0250-4ecb-b788-a07c039c38ab.PNG)
 
 
+# Ping
+보통 월드맵 기능중 가고자하는 위치에 Ping을 찍는 기능이 있다.  
+거기에 길찾기 시스템이 있지만 우리는 Navigation 기능으로 대체하였으니 건너뛰고 이 Ping 기능을 만들어 보겠다.
+
+1. 일단 맵을 키면 맵 UI 사이즈 안에서 우클릭을 하면 PingIcon을 마우스 위치에 나타나게한다.  
+2. 나타나게 했으면 제거도 만들어야한다. 제거는 PingIcon 위에서 다시 한번 우클릭 하는 것이다.  
+    그렇다면 if 조건으로 Ping위에 마우스가 있다면 제거, 없다면 나타내기가 될 것이다. 
+
+```c++
+[Header("[Ping]")]
+[SerializeField] private Image _pingImage;
+[SerializeField] private Ping _ping;
+[SerializeField] private bool _pointerOnPing;
+
+private void TryOnPing()
+{
+    // 우클릭 && 맵의 사이즈 (1000x1000) 범위 안에 클릭할 경우
+    if (Input.GetMouseButtonUp(1)
+        && Input.mousePosition.x >= 460 && Input.mousePosition.x <= 1460 
+        && Input.mousePosition.y >= 40 && Input.mousePosition.y <= 1040)
+    {          
+        if (_pingImage.gameObject.activeSelf && _pointerOnPing)
+        {   // 현재 Ping이 있고 마우스 위치가 Ping과 같은 경우
+            RemovePing();
+        }
+        else
+        {
+            SetPingPos();
+        }  
+    }
+}
+
+private void SetPingPos()
+{
+    _ping.gameObject.SetActive(true);
+    _pingImage.gameObject.SetActive(true);
+    _pingImage.rectTransform.position = Input.mousePosition;
+}
+
+public void RemovePing()
+{
+    _pointerOnPing = false;
+    _ping.gameObject.SetActive(false);
+    _pingImage.gameObject.SetActive(false);
+    _iconName.gameObject.SetActive(false);
+}
+```
+
+이 TryOnPing()을 위에서 코루틴으로 만든 CUpdateMap 코루틴에서 같이 돌려주면 된다.  
+그러면 이제 맵에서 보일 Ping 오브젝트를 만들어야 한다.
+
+SetPingPos() 메서드에서 이와 같이 코드를 추가한다.  
+```c++
+private const float _fallHeight = 0f;
+private const int _realScale = 3;
+
+private void SetPingPos()
+{
+    _ping.gameObject.SetActive(true);
+    _pingImage.gameObject.SetActive(true);
+    _pingImage.rectTransform.position = Input.mousePosition;
+
+    // Ping 실제 월드공간 위치지정
+    float posX = _pingImage.rectTransform.anchoredPosition.x;
+    float posZ = _pingImage.rectTransform.anchoredPosition.y;
+    _ping.transform.position = new Vector3(posX * _realScale, _fallHeight, posZ * _realScale);
+} 
+```
