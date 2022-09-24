@@ -1,6 +1,6 @@
 ---
 layout: single 
-title: "To-dream (Remake Start) : 기록 제 3장 : Buoyancy"
+title: "To-dream (Remake from here) : 기록 제 3장 : Buoyancy"
 categories: ToDream
 tag: Portfolio
 ---
