@@ -84,7 +84,7 @@ UI의 이미지 위치를 Canvas내에서 이동 시킬땐 anchoredPosition을 �
 NPC와 QuestTarget은 고정된 위치이다. 그래서 각각의 위치를 직접 잡아 주었다.  
 ![NPCAndQuestTarget](https://user-images.githubusercontent.com/97664446/191268236-f381ac58-b1d2-4bb8-9652-ec1a3deba1a7.PNG)  
 
-NPC는 NPCMakerUI에서 모든 NPC 데이터를 가지고 있다. 그리고 각 NPC의 퀘스트 상태에따라 이미지를 바꿔주고자 한다.  
+NPC는 NPCMakerUI에서 모든 데이터를 가지고 있다. 그리고 각 NPC의 퀘스트 상태에따라 이미지를 바꿔주고자 한다.  
 default, avaliable, inProgress, completed의 상태가 있다.  
 OnEnable()에 다음과 같은 메서드를 추가한다.  
 
@@ -276,6 +276,6 @@ private void OnTriggerEnter(Collider other)
 ```
 
 # Result
-![Result](https://user-images.githubusercontent.com/97664446/192115107-e8de623f-f989-4fe8-912d-ac3759be3eb9.gif)
+![Result](https://user-images.githubusercontent.com/97664446/192115844-0e0a943a-6a8b-4308-bd96-fc80dd33a8de.gif)
 
 짠 ~ 많이 미숙하지만 드디어 월드맵의 기능들이 완성되었다 !!
