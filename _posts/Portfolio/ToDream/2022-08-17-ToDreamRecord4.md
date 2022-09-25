@@ -17,7 +17,7 @@ tag: Portfolio
 
 대략적으로 Quest의 구조는 이렇다.  
 ![Quest](https://user-images.githubusercontent.com/97664446/185072117-1b8e13c2-d09b-4f12-ad42-38dcf1814901.PNG)
-
+(아직 UML 작성법을 몰라 흉내만 내보았다.)
 
 ## QuestGoal
 추가로 하나의 퀘스트에서 목표가 여러가지 일 수 있기 때문에 이와같이 만들었다.
