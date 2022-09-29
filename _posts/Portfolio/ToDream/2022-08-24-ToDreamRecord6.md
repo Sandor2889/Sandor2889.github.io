@@ -50,7 +50,7 @@ private Coroutine _coroutinMap;                 // 현재 실행중인 코루틴
 
 private void OnEnable()
 {
-    _coroutinMap = StartCoroutine(CUpdateMap());
+    _coroutinMap = StartCoroutine(C_UpdateMap());
 }
 
 private void OnDisable()
@@ -63,7 +63,7 @@ private void SetPlayerPos()
     _playerIcon.rectTransform.anchoredPosition = new Vector2(_player.position.x * _scaleFactor, _player.position.z * _scaleFactor);
 }
 
-private IEnumerator CUpdateMap()
+private IEnumerator C_UpdateMap()
 {
     while (true)
     {
@@ -279,3 +279,8 @@ private void OnTriggerEnter(Collider other)
 ![Result](https://user-images.githubusercontent.com/97664446/192115844-0e0a943a-6a8b-4308-bd96-fc80dd33a8de.gif)
 
 짠 ~ 많이 미숙하지만 드디어 월드맵의 기능들이 완성되었다 !!
+
+***
+
+새로운 사실을 알았다. 코루틴은 해당 오브젝트가 비활성화되면 자동으로 중단된다.  
+따라서 코루틴 변수를 선언하고 Diable에서 중단해주는 과정을 생략할 수 있다. 
