@@ -20,7 +20,7 @@ tag: Portfolio
 
 네비게이션을 키고 끄는 메서드를 만든다.  
 수락한 퀘스트가 없으면 네비게이션이 켜지면 안된다.  
-```c++
+```c#
 public void OnNav()
 {
     if (!QuestManager.CheckHasQuest()) { return; }
@@ -53,7 +53,7 @@ public static bool CheckHasQuest()
 for문으로 퀘스트 목표가 완료된 것이라면 리스트에서 바로 제외, 아니면 배열에 넣고 제외시키는 방식으로 하였다.  
 (킬 때마다 리스트가 생성되고, 이중 for문으로 탐샘해야하는 방식이라 마음에 들지 않지만 현재로선 이렇게 밖에 구현하지 못하겠다.)
 
-```c++
+```c#
 [SerializeField] private float _searchDistance = 10f;
 [SerializeField] private GameObject _navArrow;
 private Transform[] _targetTr;
@@ -100,7 +100,7 @@ _targetTr : 퀘스트의 목표는 4개 이상으로 잘 없으니 Awake에서 �
 Vector 좌표계에서 점과 점의 차는 방향과 거리를 나타낸다. (퀘스트 목표 - 내 위치)  
 목표물에 근접했는지 거리를 연산해야한다. sqrMagnitude는 루트 연산을 하지 않기 때문에 속도가 빠르다.  
 그래서 비교 대상인 _searchDistance를 제곱하여 비교해야 한다.  
-```c++
+```c#
 private void Update()
 {
     Vector3 offset = _targetTr[0].position - transform.position;

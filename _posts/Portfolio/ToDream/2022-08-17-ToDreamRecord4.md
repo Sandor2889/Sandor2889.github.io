@@ -21,7 +21,7 @@ tag: Portfolio
 
 ## QuestGoal
 추가로 하나의 퀘스트에서 목표가 여러가지 일 수 있기 때문에 이와같이 만들었다.
-```c++
+```c#
 public enum GoalState
 {
     InProgress,     // 진행중

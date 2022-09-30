@@ -40,7 +40,7 @@ UI 맵의 크기는 1000으로 실제맵과 1:3비율이다.
 월드 맵을 켰을때 Update()를 사용해 위치값을 계속 받는 것보다 코루틴을 이용하여  
 키면 시작하고 끄면 멈추도록 만들었다.  
 
-```c++
+```c#
 [Header("[Player]")]
 [SerializeField] private Transform _player;     // 실제 Player 위치
 [SerializeField] private Image _playerIcon;     // 맵의 Player 이미지
@@ -88,7 +88,7 @@ NPC는 NPCMakerUI에서 모든 데이터를 가지고 있다. 그리고 각 NPC�
 default, avaliable, inProgress, completed의 상태가 있다.  
 OnEnable()에 다음과 같은 메서드를 추가한다.  
 
-```c++
+```c#
 [Header("[NPC]")]
 [SerializeField] private Sprite _default;
 [SerializeField] private Sprite _avaliable;
@@ -126,7 +126,7 @@ QuestTarget을 따로 저장하고 있지 않기 때문에 새로 만들어 주�
 그리고 각각 QuestTarget에 대응되는 Image[]도 같이 만들어 준다.  
 마찬가지로 OnEnable()에 메서드를 추가한다.  
 
-```c++
+```c#
  [Header("[QuestTarget]")]
 [SerializeField] private GameObject _targetParent;
 [SerializeField] private QuestTargetMarker[] _questTargets;     // _targetImage와 순서 맞출 것
@@ -186,7 +186,7 @@ public void OffText()
 2. 나타나게 했으면 제거도 만들어야한다. 제거는 PingIcon 위에서 다시 한번 우클릭 하는 것이다.  
  그렇다면 if 조건으로 Ping위에 마우스가 있다면 제거, 없다면 나타내기가 될 것이다. 
 
-```c++
+```c#
 [Header("[Ping]")]
 [SerializeField] private Image _pingImage;
 [SerializeField] private Ping _ping;
@@ -264,7 +264,7 @@ private void SetPingPos()
  이를 해결하기위해 Ping을 높은 곳에서부터 보이지 않는 속도로 떨어지게하고 바닥 콜라이더에 닿는 순간 멈추게 하려고 하였으나 낙하 속도가 너무 빠르면 바닥 콜라이더를 뚫고 지나가버리고 느리면 Ping이 떨어지는 것이 보이게 된다. 이 건은 차후 아이디어가 생기면 고쳐야 할 부분이 되겠다.  
 
 아무튼 Ping 오브젝트는 Player와 충돌시 사라지도록 따로 Ping class에서 다뤄줬다.  
-```c++
+```c#
 private void OnTriggerEnter(Collider other)
 {
     if(other.gameObject.tag == "Player")
