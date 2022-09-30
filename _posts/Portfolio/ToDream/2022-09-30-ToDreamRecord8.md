@@ -32,7 +32,9 @@ PopupUIBase를 상속받는 주인공들은 InventoryUI, WorldMapUI, QuestListUI
 할 필요가 있기 때문에 List로 선언한다.
 UIManager에서 관리 하도록 하겠다.
 
-> private List<PopupUIBase> _popupUI = new List<PopupUIBase>();
+```c#
+private List<PopupUIBase> _popupUI = new List<PopupUIBase>();
+```
 
 자 그러면 이러한 동작을 거치게 될 것이다.
 
@@ -103,7 +105,9 @@ List로 마지막 요소를 제거 해야하기 때문에 RemoveAt()를 사용�
 Canvas 클래스에 sortingOrder라는 프로퍼티가 있다. 숫자가 높을 수록 가장 위에 그려진다.  
 그래서 PopupUIBase에 다음과 같이 추가 하겠다.
 
-> public Canvas _canvas;
+```c#
+public Canvas _canvas;
+```
 
 그리고 UIManager에서 SetOrder() 메서드를 추가 한다.
 UI가 추가되거나 제거 될때마다 for문으로 popupUI의 모든 요소에 대해 order값을 재설정해줄 것이다.  
