@@ -70,7 +70,7 @@ QuestManager에서 내가 만든, 등록된 Quest 데이터들을 모두 저장�
     }
     #endregion
 
-    public List<Quest> _questContainer = new List<Quest>();             // 퀘스트 데이터베이스
+    public List<Quest> _questContainer = new List<Quest>();     // 퀘스트 데이터베이스
     public List<Quest> _acceptedQuests = new List<Quest>();     // 수락한 퀘스트
     public List<Quest> _doneQuests = new List<Quest>();         // 완료된 퀘스트
 
