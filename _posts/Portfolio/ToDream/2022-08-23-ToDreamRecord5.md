@@ -118,9 +118,9 @@ public void OnRegistrationButton()
 
 ### 등록해제
 
-우선 등록 해제 버튼을 추가해보자
+우선 등록 해제 버튼을 추가해보자  
 ![Buttons](https://user-images.githubusercontent.com/97664446/193415155-001c326b-fbb2-4c5b-8f0f-ea979448a931.PNG)
-![text](https://user-images.githubusercontent.com/97664446/193415151-f6c695d0-afcc-4b84-8da7-b3c2cab662e8.PNG)
+![Release](https://user-images.githubusercontent.com/97664446/193415150-c5f13244-2fa1-44dd-8607-d0ba69626d51.PNG)
 
 그리고 Realse 메서드를 만들어 버튼 이벤트에 추가시키면 된다.  
 - currentVehicles[]의 인덱스 값을 초기화 시킨다. idx = (아이템의 카테고리 + 1)   
@@ -137,7 +137,7 @@ public void Release()
 
 ### On/Off 텍스트  
 우선 표시될 텍스트를 각각의 slot에 추가한다.  
-![Release](https://user-images.githubusercontent.com/97664446/193415150-c5f13244-2fa1-44dd-8607-d0ba69626d51.PNG)
+![text](https://user-images.githubusercontent.com/97664446/193415151-f6c695d0-afcc-4b84-8da7-b3c2cab662e8.PNG)
 
 각각의 탈 것 아이템이 등록 상태를 확인하기 위해 ResgistrationState class를 만들고 붙여주었다.  
 
