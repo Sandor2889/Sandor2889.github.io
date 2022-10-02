@@ -53,6 +53,85 @@ public Quest _CurrentQuest
 }
 ```
 
+# NPCMakerUI
+각각의 NPC가 가진 퀘스트에 따라 머리위에 마크를 달 것이다.  
+조건과 모양은 다음과 같다.  
+- 퀘스트가 없거나 수락 불가 : 마크 없음
+- 수락 가능 : ?
+- 진행중 : 톱니바퀴
+- 완료 가능 : ★
+
+NPC를 배열로 저장하고 퀘스트가 완료될때 마다 이벤트로 갱신시켜주겠다.  
+
+```c#
+public class NPCMarkerUI : MonoBehaviour
+{
+    [SerializeField] private QuestGiver[] _npcs;
+
+    public QuestGiver[] _Npcs => _npcs;
+
+    // (int 퀘스트제공자, QuestState 퀘스트 진행상태)
+    public void SettingByQuestState(int idx, QuestState questState)
+    {
+        OnMarker(idx, questState);
+    }
+
+    private void OnMarker(int idx, QuestState state)
+    {
+        QuestGiver giver = _npcs[idx];
+        int intState = (int)state - 1;  // 0은 수락 불가능 상태이므로 1부터 시작
+
+        for(int i = 0; i < giver._Markers.Length; i++)
+        {
+            // 수락 불가 상태나 완료된 상태라면 모든 마커 종료
+            if (state == QuestState.Unvaliable || state == QuestState.Done)
+            {
+                giver._Markers[i].gameObject.SetActive(false);
+                continue;
+            }
+
+            if (intState == i)
+            {
+                giver._Markers[i].gameObject.SetActive(true);
+            }
+            else 
+            {
+                giver._Markers[i].gameObject.SetActive(false);
+            }
+        }
+    }
+}
+```
+
+이벤트들은 QuestGiver에서 퀘스트를 Manager에서 가져올때 같이 추가시켜준다.
+Quest에서 먼저 이벤트를 선언해준다.
+
+Quest class
+```c#
+// QuestGiver의 현재 퀘스트 상태에 따른 Marker 업데이트
+public System.Action<int, QuestState> _onNPCMarker; 
+```
+
+QuestGiver class
+```c#
+private void DistributeQuests()
+{
+    // QuestManager에서 NPCName이 같은 것 가져오기
+    QuestManager questMgr = QuestManager._Instance;
+    _myQuests = questMgr._questContainer.FindAll(x => x._npcName.GetHashCode() == _npcName.GetHashCode());
+
+    if (_myQuests.Count <= 0) { return; }
+
+    // 이벤트 등록
+    foreach (var quest in _myQuests)
+    {
+        quest._onNPCMarker += UIManager._Instance._NPCMarkerUI.SettingByQuestState;
+    }
+}
+```
+
+![NPCMarker](https://user-images.githubusercontent.com/97664446/193474991-3dd437d1-3c1a-4732-b94f-80243c5c7a2e.PNG)
+
 # ObjectInteraction과 InteractionUI
 
 NPC와 대화를 하기 위한 상호작용을 만들어야 한다.
