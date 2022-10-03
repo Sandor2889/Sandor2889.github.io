@@ -233,3 +233,214 @@ private void ActivateRewardItem(bool isReward)
 대화 시작부터 퀘스트 수락하는 과정이다.  
 
 # QuestListUI - QButtonInList - QButtonPool
+
+퀘스트를 수락했으면 이를 확인할 수 있는 목록 창이 필요하다.  
+수락된 퀘스트들이 나열되어 있고 클릭하면 해당 퀘스트 창을 다시 불러와 포기하기 기능을 만들거다.  
+
+우선 구조를 살펴보자.  
+- 각각의 칸은 버튼으로 클릭이 될 거고 해당 퀘스트의 UI를 띄울것이기 때문에 버튼으로 이루어져야 한다.
+- 퀘스트를 수락 할 때마다 칸이 하나씩 생성되어 목록에서 나타내어진다.  (오브젝트 풀을 사용해보자)
+- 클릭한 칸의 퀘스트 코드를 받아 UI에 정보를 전달한다.  
+
+우선 QuestListUI를 만들자.
+```c#
+public class QuestListUI : PopupUIBase
+{
+    public List<QButtonInList> _qButtons = new List<QButtonInList>();
+    public int _clickedQCode;
+
+    public override void OpenControllableUI()
+    {
+        UIManager._isOpendUI = true;
+        gameObject.SetActive(true);
+    }
+
+    public override void CloseControllableUI()
+    {
+        UIManager._isOpendUI = false;
+        gameObject.SetActive(false);
+    }
+}
+```
+QuestManager에 수락한 퀘스트가 있지만 타입이 달라 따로 하나 더 만들었다. (뭔가 좋은 방법 없을까?)  
+ClickedQCode는 클릭한 퀘스트의 코드를 받을 변수이다.  
+
+각각의 칸을 이루는 QButtonInList class를 만든다.  
+```c#
+public class QButtonInList : MonoBehaviour
+{
+    public Text _titleText;
+    public Text _stateText;
+    public Quest _quest;
+
+    public void SetText()
+    {
+        _titleText.text = _quest._title;
+        _stateText.text = _quest._questState.ToString();
+    }
+}
+
+public void OpenQuestByList()
+{
+    UIManager._Instance._QuestListUI._clickedQCode = _quest._questCode;
+    // QuestUI 열기
+}
+```
+
+QuestUI를 여는 것은 이따가 만들어주고 오브젝트 풀을 만들어보자.  
+객체를 생성하고 파괴가 반복되면 가비지 칼렉터가 그 만큼 발생하여 성능의 저하를 일으킨다.  
+그래서 미리 객체를 풀이라는 공간에 생성하고 필요할때 꺼내고 다 쓰면 다시 반환 시키는 패턴이다. 
+
+크게 세가지의 역할을 할 메서드가 필요하다.
+1. 초기 객체 생성 수 : Init() / Create()
+2. 풀에서 가져오기 : Get()
+3. 풀에 반환하기 : Return();
+
+# QButtonPool
+```c#
+public class QButtonPool : MonoBehaviour
+{
+    [SerializeField] private GameObject _buttonObj;
+    [SerializeField] private ScrollRect _scrollRect;
+    [SerializeField] private int _count;
+
+    public Queue<QButtonInList> _qButtons = new Queue<QButtonInList>();
+
+    private void Awake()
+    {
+        InitObj(_count);
+    }
+
+    private QButtonInList CreateNewObj()
+    {
+        QButtonInList obj = Instantiate(_buttonObj).GetComponent<QButtonInList>();
+        obj.transform.SetParent(transform);
+        obj.gameObject.SetActive(false);
+        return obj;
+    }
+
+    private void InitObj(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            _qButtons.Enqueue(CreateNewObj());     
+        }
+    }
+
+    // 퀘스트 수락시 호출
+    public QButtonInList GetObj(Quest quest)
+    {
+        if (_qButtons.Count > 0)    // 수락 가능한 빈자리가 있다면 실행
+        {
+            QButtonInList obj = _qButtons.Dequeue();
+            obj._quest = quest;
+            obj.transform.SetParent(_scrollRect.content);
+            obj.gameObject.SetActive(true);
+
+            UIManager._Instance._QuestListUI._qButtons.Add(obj);
+            return obj;
+        }
+        else
+        {
+            // 퀘스트 수락 가능 한도제한 팝업 실행하기
+            return null;
+        }
+    }
+
+    public void ReturnObj(QButtonInList qButton)
+    {
+        qButton._quest = null;
+        qButton.transform.SetParent(transform);
+        qButton.gameObject.SetActive(false);
+        _qButtons.Enqueue(qButton);
+
+        UIManager._Instance._QuestListUI._qButtons.Remove(qButton);
+    }
+}
+```
+주의할점은 객체를 꺼낼땐 content의 하위로 보내고 넣을땐 풀의 위치로 들어가게 한다.  
+
+이제 QuestUI를 여는 메서드를 만들자.
+기존에 대화 진행으로 여는 OpenQuest가 있기때문에 OpenQuestByList라고 이름을 지어준다.
+그리고 버튼도 바껴야 한다.  
+- 수락/거절
+- 포기/돌아가기
+이렇게 세트로 바껴야한다.  
+
+QuestUI class
+```c#
+public Button _accept;
+public Button _refuse;
+public Button _cancel;
+public Button _back;
+
+// NPC 대화를 통해 열기
+public void OpenQuest()
+{
+    Quest quest = UIManager._Instance._QuestUI._questGiver._CurrentQuest;
+
+    if (quest._questState != QuestState.Avaliable) { return; }  // 예외 처리
+
+    ActivateButton(true);        // 수락/거절 버튼 활성화
+    SetText(quest);              // 퀘스트 내용 업데이트
+    gameObject.SetActive(true);
+}
+
+// 퀘스트 목록 창에서 열기
+public void OpenQuestByList()
+{
+    UIManager uiMgr = UIManager._Instance;
+    // QuestListUI에서 클릭한 퀘스트의 code와 수락한 퀘스트들 중 code가 일치 하는 것 찾기
+    Quest quest = uiMgr._QuestListUI._qButtons.Find(
+        x => x._quest._questCode == uiMgr._QuestListUI._clickedQCode)._quest;
+
+    ActivateButton(false);        // 포기/뒤로가기 버튼 활성화
+    SetText(quest);               // 퀘스트 내용 업데이트
+    gameObject.SetActive(true);
+}
+
+public void CancelQuest()
+{
+    UIManager uiMgr = UIManager._Instance;
+    QButtonInList qButton = uiMgr._QuestListUI._qButtons.Find(
+        x => x._quest._questCode == uiMgr._QuestListUI._clickedQCode);
+    Quest quest = qButton._quest;
+
+    // 모든 목표 상태 초기화
+    foreach (var goal in quest._questGoals)
+    {
+        goal.Cancel();
+    }
+    quest.Avaliable();  // 퀘스트 상태 되돌리기
+
+    QuestManager._Instance._acceptedQuests.Remove(quest);
+    uiMgr._QButtonPool.ReturnObj(qButton);
+    Back();
+}
+
+public void Back()
+{
+    gameObject.SetActive(false);
+}
+
+// true -> (수락, 거절)
+// false -> (취소, 뒤로가기)
+private void ActivateButton(bool normal)
+{
+    _accept.gameObject.SetActive(normal);
+    _refuse.gameObject.SetActive(normal);
+    _cancel.gameObject.SetActive(!normal);
+    _back.gameObject.SetActive(!normal);
+}
+```
+
+자 이제 마지막으로 QbuttonInList에서 QuestUI를 여는 코드를 추가해주자.
+```c#
+// QuestListUI에서 Quest 클릭시 해당 Quest의 code를 받고
+// QuestUI 연다. (이 메서드는 버튼 클릭 이벤트로 호출)
+public void OpenQuestByList()
+{
+    UIManager._Instance._QuestListUI._clickedQCode = _quest._questCode;
+    UIManager._Instance._QuestUI.OpenQuestByList();
+}
+```

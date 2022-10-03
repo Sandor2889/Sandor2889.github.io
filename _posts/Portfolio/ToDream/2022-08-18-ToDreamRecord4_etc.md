@@ -53,6 +53,7 @@ public Quest _CurrentQuest
 }
 ```
 
+
 # NPCMakerUI
 각각의 NPC가 가진 퀘스트에 따라 머리위에 마크를 달 것이다.  
 조건과 모양은 다음과 같다.  
@@ -131,7 +132,7 @@ private void DistributeQuests()
 ```
 
 ![NPCMarker](https://user-images.githubusercontent.com/97664446/193474991-3dd437d1-3c1a-4732-b94f-80243c5c7a2e.PNG)  
-
+  
 # ObjectInteraction과 InteractionUI
 
 NPC와 대화를 하기 위한 상호작용을 만들어야 한다.
@@ -180,7 +181,7 @@ Player에 이 스크립트를 붙여주고 Layer를 설정하자.
 ![ObjectInteraction](https://user-images.githubusercontent.com/97664446/193472275-9d5de146-bd25-4deb-b02f-34803f43c29f.PNG)
 ![DrawRay](https://user-images.githubusercontent.com/97664446/193472270-3e9f57e5-f184-45dc-aaac-9290ce3e862e.PNG)  
 
-이러면 일단 NPC에 한해서만 충돌 할 것이다. 그러면 Talk 라는 메세지를 띄워 보도록 하자.
+이러면 일단 NPC에 한해서만 충돌 할 것이다. 그러면 Talk 라는 메세지를 띄워 보도록 하자.  
 
 # InteractionUI
 
