@@ -444,3 +444,6 @@ public void OpenQuestByList()
     UIManager._Instance._QuestUI.OpenQuestByList();
 }
 ```
+
+# Result
+![Result](https://user-images.githubusercontent.com/97664446/193614218-72b1ae1f-5288-466c-b603-314590eda3d4.gif)
