@@ -7,7 +7,7 @@ tag: Portfolio
 
 # QuestGiver
 
-각각의 를 작성할 때 enum으로된 NPCName을 입력하는 변수가 있다.  
+각각의 Quest를 작성할 때 enum으로된 NPCName을 입력하는 변수가 있다.  
 NPC들은 QuestGiver를 가지고 있으며 마찬가지로 어떤 NPC인지 enum 타입으로 가지게 된다.  
 그렇다면 QuestManager에 등록된 퀘스트중 NPCName을 가져와보도록 하자.  
 ```c#
