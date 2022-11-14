@@ -48,7 +48,7 @@ public class DialogUI : MonoBehaviour
     public void UpdateDialog()
     {
         UIManager uiMgr = UIManager._Instance;
-        QuestGiver giver = UIManager._Instance._QuestUI._questGiver;
+        QuestGiver giver = uiMgr._QuestUI._questGiver;
 
         // 퀘스트 창 Open 시점 (해당 Idx의 Text가 출력이 되야 하기 때문에 +1)
         if (_dialogIdx == giver._CurrentQuest._openQuestIdx + 1)
@@ -60,7 +60,7 @@ public class DialogUI : MonoBehaviour
         {
             CloseDialog();
         }
-        // 퀘스트 수락 전 대화 (dialogIdx == 0 ~ openQuestIdx - 1)
+        // 퀘스트 수락 전 대화 (dialogIdx == 0 ~ openQuestIdx)
         else
         {
             string str = giver._CurrentQuest._talk[_dialogIdx];
@@ -191,16 +191,15 @@ public void CloseQuest()
 public void AcceptQuest()
 {
     UIManager uiMgr =UIManager._Instance;
-    QuestGiver giver = uiMgr._QuestUI._questGiver;
 
-    giver._CurrentQuest.Accepted(); 
+    _questGiver._CurrentQuest.Accepted(); 
     CloseQuest();
 
     // 현재 진행된 대화 인덱스가 퀘스트의 총량 보다 작으면 동작 (퀘스트 수락 후 대화로 넘어감)
     // 퀘스트 수락 후 대화가 없다면 대화 종료.
-    if (uiMgr._DialogUI._dialogIdx < giver._CurrentQuest._talk.Count)
+    if (uiMgr._DialogUI._dialogIdx < _questGiver._CurrentQuest._talk.Count)
     {
-        uiMgr._DialogUI.SetText(giver._npcName, giver._CurrentQuest._talk[uiMgr._DialogUI._dialogIdx]);
+        uiMgr._DialogUI.SetText(_questGiver._npcName, _questGiver._CurrentQuest._talk[uiMgr._DialogUI._dialogIdx]);
         uiMgr._DialogUI._dialogIdx++;
     }
     else
